@@ -338,6 +338,10 @@ PrefabInstance:
       propertyPath: movementSpeed.z
       value: 100
       objectReference: {fileID: 0}
+    - target: {fileID: -794708841742306139, guid: 64b84e1422efbae4bb5bc4bc69bc8a8f, type: 3}
+      propertyPath: jumpInitialVelocity
+      value: 0.5
+      objectReference: {fileID: 0}
     - target: {fileID: 2066106991113315374, guid: 64b84e1422efbae4bb5bc4bc69bc8a8f, type: 3}
       propertyPath: m_Name
       value: Player

@@ -13,11 +13,13 @@ public class movement : MonoBehaviour
     public Vector2 lookSpeed = new Vector2(1, 1);
     public float lookUpperLimit = 85f;
     public float lookLowerLimit = -85f;
+    public float jumpInitialVelocity = 1f;
 
     // global vars to be refrenced in multiple functions
     private Vector3 playerMovement;
     private Vector2 look;
     private Vector3 gravityEffect;
+    private Vector3 currentVerticalMovement;
 
     // Start is called before the first frame update
     private void Start()
@@ -35,6 +37,7 @@ public class movement : MonoBehaviour
         look = new Vector2(0, 0);
         playerMovement = new Vector3(0, 0, 0);
         gravityEffect = new Vector3(0, 0, 0);
+        currentVerticalMovement = new Vector3(0, 0, 0);
     }
 
     // Update is called once per frame
@@ -71,8 +74,19 @@ public class movement : MonoBehaviour
         else
         {
             gravityEffect = new Vector3(0, 0, 0);
+            currentVerticalMovement = new Vector3(0, 0, 0);
         }
-        currentMovement += gravityEffect * Time.fixedDeltaTime;
+        currentVerticalMovement += gravityEffect * Time.fixedDeltaTime;
+        Debug.Log(currentVerticalMovement);
+
+        // jump function
+        if(!playerController.isGrounded && Input.GetButtonDown("Jump"))
+        {
+            currentVerticalMovement += new Vector3(0, jumpInitialVelocity, 0);
+        }
+
+        // add in the vertical component of movement
+        currentMovement += currentVerticalMovement;
 
         // add wasd forward backward left right movement controls to player
         playerMovement = transform.TransformDirection(playerMovement);
