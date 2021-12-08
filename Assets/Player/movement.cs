@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class movement : MonoBehaviour
 {
-    //refrence environment variables
+    // refrence environment variables
     private CharacterController playerController;
     private Transform playerCamera;
 
@@ -13,6 +13,11 @@ public class movement : MonoBehaviour
     public Vector2 lookSpeed = new Vector2(1, 1);
     public float lookUpperLimit = 85f;
     public float lookLowerLimit = -85f;
+
+    // global vars to be refrenced in multiple functions
+    private Vector3 playerMovement;
+    private Vector2 look;
+    private Vector3 gravityEffect;
 
     // Start is called before the first frame update
     private void Start()
@@ -25,21 +30,19 @@ public class movement : MonoBehaviour
 
         // set the target frame rate for the application to 60fps
         Application.targetFrameRate = 60;
+
+        // set global vars initially
+        look = new Vector2(0, 0);
+        playerMovement = new Vector3(0, 0, 0);
+        gravityEffect = new Vector3(0, 0, 0);
     }
 
     // Update is called once per frame
     private void Update()
     {
         // get mouse and keyboard input
-        Vector2 look = new Vector2(Input.GetAxis("Mouse X"), Input.GetAxis("Mouse Y"));
-        Vector3 movement = new Vector3(Input.GetAxis("Horizontal"), 0, Input.GetAxis("Vertical"));
-
-        // add wasd forward backward left right movement controls to player
-        movement = transform.TransformDirection(movement);
-        playerController.Move(Vector3.Scale(movement, movementSpeed));
-
-        // rotate player horizontally to look at mouse
-        transform.Rotate(new Vector3(0, Vector2.Scale(look, lookSpeed).x, 0));
+        look = new Vector2(Input.GetAxis("Mouse X"), Input.GetAxis("Mouse Y"));
+        playerMovement = new Vector3(Input.GetAxis("Horizontal"), 0, Input.GetAxis("Vertical"));
 
         // rotate camera vertically to look up and down with mouse
         // set current looking direction as temp var
@@ -52,6 +55,35 @@ public class movement : MonoBehaviour
         verticalAngle = denormalizeAngle(verticalAngle);
         // set direction of camera
         playerCamera.Rotate(new Vector3(verticalAngle - directionTempVert, 0, 0));
+    }
+
+    // Fixed Update is called once per physics cycle
+    private void FixedUpdate()
+    {
+        // create current physics cycle movement variable
+        Vector3 currentMovement = new Vector3(0, 0, 0);
+
+        // calculate gravity movement
+        if(!playerController.isGrounded)
+        {
+            //gravityEffect -= Physics.gravity;
+            Debug.Log("grounded");
+        }
+        else
+        {
+            gravityEffect = new Vector3(0, 0, 0);
+        }
+        currentMovement += gravityEffect * Time.fixedDeltaTime;
+
+        // add wasd forward backward left right movement controls to player
+        playerMovement = transform.TransformDirection(playerMovement);
+        currentMovement += Vector3.Scale(playerMovement, movementSpeed) * Time.fixedDeltaTime;
+
+        // move the player based the the movement for the current physics update
+        playerController.Move(currentMovement);
+
+        // rotate player horizontally to look at mouse
+        transform.Rotate(new Vector3(0, Vector2.Scale(look, lookSpeed).x, 0));
     }
 
     // normalize angle to return between -180 and 180, centered on horizon with negative values facing down
