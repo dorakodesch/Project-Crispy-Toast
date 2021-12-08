@@ -66,8 +66,7 @@ public class movement : MonoBehaviour
         // calculate gravity movement
         if(!playerController.isGrounded)
         {
-            //gravityEffect -= Physics.gravity;
-            Debug.Log("grounded");
+            gravityEffect += Physics.gravity * Time.fixedDeltaTime;
         }
         else
         {
