@@ -71,4 +71,5 @@ crashlytics-build.properties
 /[Aa]ssets/[Ss]treamingAssets/aa/*
 
 # Library folder
-[Li]brary/
+[Ll]ibrary/
+[Ll]ogs/
