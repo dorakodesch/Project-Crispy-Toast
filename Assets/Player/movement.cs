@@ -1,6 +1,7 @@
 // script must be attached to the player object in order to function properly
 using System;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class movement : MonoBehaviour
 {
@@ -41,6 +42,9 @@ public class movement : MonoBehaviour
         playerMovement = new Vector3(0, 0, 0);
         gravityEffect = new Vector3(0, 0, 0);
         currentVerticalMovement = new Vector3(0, 0, 0);
+
+        // lock cursor to center of screen
+        Cursor.lockState = CursorLockMode.Locked;
     }
 
     // Update is called once per frame
