@@ -10,8 +10,10 @@ public class movement : MonoBehaviour
     private Transform playerCamera;
 
     // script public attribute variables
-    public Vector3 movementSpeed = new Vector3(1, 1, 1);
-    public Vector2 lookSpeed = new Vector2(1, 1);
+    [SerializeField]
+    private Vector3 movementSpeed = new Vector3(1, 1, 1);
+    [SerializeField]
+    private Vector2 lookSpeed = new Vector2(1, 1);
     [SerializeField, Range(5f, 90f)]
     private float lookUpperLimit = 85f;
     [SerializeField, Range(-90f, -5f)]
@@ -37,7 +39,7 @@ public class movement : MonoBehaviour
         // set the target frame rate for the application to 60fps
         Application.targetFrameRate = 60;
 
-        // set global vars initially
+        // initalize globar vars
         look = new Vector2(0, 0);
         playerMovement = new Vector3(0, 0, 0);
         gravityEffect = new Vector3(0, 0, 0);
