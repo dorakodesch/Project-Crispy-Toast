@@ -11,9 +11,12 @@ public class movement : MonoBehaviour
     // script public attribute variables
     public Vector3 movementSpeed = new Vector3(1, 1, 1);
     public Vector2 lookSpeed = new Vector2(1, 1);
-    public float lookUpperLimit = 85f;
-    public float lookLowerLimit = -85f;
-    public float jumpInitialVelocity = 1f;
+    [SerializeField, Range(5f, 90f)]
+    private float lookUpperLimit = 85f;
+    [SerializeField, Range(-90f, -5f)]
+    private float lookLowerLimit = -85f;
+    [SerializeField, Range(0f, 10f)]
+    private float jumpInitialVelocity = 1f;
 
     // global vars to be refrenced in multiple functions
     private Vector3 playerMovement;
