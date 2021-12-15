@@ -20,6 +20,8 @@ public class movement : MonoBehaviour
     private float lookLowerLimit = -85f;
     [SerializeField, Range(0f, 10f)]
     private float jumpInitialVelocity = 1f;
+    [SerializeField, Range(0f, 1f)]
+    private float jumpSenseRange = .1f;
 
     // global vars to be refrenced in multiple functions
     private Vector3 playerMovement;
@@ -86,10 +88,6 @@ public class movement : MonoBehaviour
             currentVerticalMovement = new Vector3(0, 0, 0);
         }
         currentVerticalMovement += gravityEffect * Time.fixedDeltaTime;
-<<<<<<< HEAD
-        //Debug.Log(currentVerticalMovement);
-=======
->>>>>>> dcd56af51afa17487991352c07cb8127336041a6
 
         // jump function
         RaycastHit jumpRayHit;
