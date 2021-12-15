@@ -86,7 +86,6 @@ public class movement : MonoBehaviour
             currentVerticalMovement = new Vector3(0, 0, 0);
         }
         currentVerticalMovement += gravityEffect * Time.fixedDeltaTime;
-        Debug.Log(currentVerticalMovement);
 
         // jump function
         if(!playerController.isGrounded && Input.GetButtonDown("Jump"))
