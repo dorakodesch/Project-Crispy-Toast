@@ -86,7 +86,10 @@ public class movement : MonoBehaviour
             currentVerticalMovement = new Vector3(0, 0, 0);
         }
         currentVerticalMovement += gravityEffect * Time.fixedDeltaTime;
+<<<<<<< HEAD
         //Debug.Log(currentVerticalMovement);
+=======
+>>>>>>> dcd56af51afa17487991352c07cb8127336041a6
 
         // jump function
         RaycastHit jumpRayHit;
