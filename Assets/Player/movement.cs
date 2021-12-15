@@ -8,12 +8,13 @@ public class movement : MonoBehaviour
     private CharacterController playerController;
     private Transform playerCamera;
 
-    // script public attribute variables
+    // script's public attribute variables
     public Vector3 movementSpeed = new Vector3(1, 1, 1);
+    public float jumpInitialVelocity = .5f;
+    public float jumpSenseRange = .1f;
     public Vector2 lookSpeed = new Vector2(1, 1);
     public float lookUpperLimit = 85f;
     public float lookLowerLimit = -85f;
-    public float jumpInitialVelocity = 1f;
 
     // global vars to be refrenced in multiple functions
     private Vector3 playerMovement;
@@ -77,12 +78,16 @@ public class movement : MonoBehaviour
             currentVerticalMovement = new Vector3(0, 0, 0);
         }
         currentVerticalMovement += gravityEffect * Time.fixedDeltaTime;
-        Debug.Log(currentVerticalMovement);
+        //Debug.Log(currentVerticalMovement);
 
         // jump function
-        if(!playerController.isGrounded && Input.GetButtonDown("Jump"))
+        RaycastHit jumpRayHit;
+        Physics.Raycast(transform.position, transform.TransformDirection(Vector3.down + new Vector3(0f, -playerController.height / 2, 0f)) * 1f, out jumpRayHit, 1f);
+        Debug.DrawRay(transform.position, transform.TransformDirection(Vector3.down + new Vector3(0f, -playerController.height / 2, 0f)) * 1f, Color.green);
+        if (jumpRayHit.distance <= jumpSenseRange && Input.GetButtonDown("Jump"))
         {
             currentVerticalMovement += new Vector3(0, jumpInitialVelocity, 0);
+            Debug.Log("Jump");
         }
 
         // add in the vertical component of movement
