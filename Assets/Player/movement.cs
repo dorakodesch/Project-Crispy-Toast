@@ -1,6 +1,7 @@
 // script must be attached to the player object in order to function properly
 using System;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class movement : MonoBehaviour
 {
@@ -8,13 +9,17 @@ public class movement : MonoBehaviour
     private CharacterController playerController;
     private Transform playerCamera;
 
-    // script's public attribute variables
-    public Vector3 movementSpeed = new Vector3(1, 1, 1);
-    public float jumpInitialVelocity = .5f;
-    public float jumpSenseRange = .1f;
-    public Vector2 lookSpeed = new Vector2(1, 1);
-    public float lookUpperLimit = 85f;
-    public float lookLowerLimit = -85f;
+    // script public attribute variables
+    [SerializeField]
+    private Vector3 movementSpeed = new Vector3(1, 1, 1);
+    [SerializeField]
+    private Vector2 lookSpeed = new Vector2(1, 1);
+    [SerializeField, Range(5f, 90f)]
+    private float lookUpperLimit = 85f;
+    [SerializeField, Range(-90f, -5f)]
+    private float lookLowerLimit = -85f;
+    [SerializeField, Range(0f, 10f)]
+    private float jumpInitialVelocity = 1f;
 
     // global vars to be refrenced in multiple functions
     private Vector3 playerMovement;
@@ -34,11 +39,14 @@ public class movement : MonoBehaviour
         // set the target frame rate for the application to 60fps
         Application.targetFrameRate = 60;
 
-        // set global vars initially
+        // initalize globar vars
         look = new Vector2(0, 0);
         playerMovement = new Vector3(0, 0, 0);
         gravityEffect = new Vector3(0, 0, 0);
         currentVerticalMovement = new Vector3(0, 0, 0);
+
+        // lock cursor to center of screen
+        Cursor.lockState = CursorLockMode.Locked;
     }
 
     // Update is called once per frame
