@@ -68,12 +68,15 @@ public class movement : MonoBehaviour
         // rotate camera vertically to look up and down with mouse
         // set current looking direction as temp var
         float directionTempVert = playerCamera.eulerAngles.x;
+
         // query current direction, normalize, and add movement
         float verticalAngle = normalizeAngle(playerCamera.rotation.eulerAngles.x);
         verticalAngle += Vector2.Scale(look, new Vector2(lookSpeed, lookSpeed)).y;
+
         // clamp to possible range and denormalize
         verticalAngle = Mathf.Clamp(verticalAngle, lookLowerLimit, lookUpperLimit);
         verticalAngle = denormalizeAngle(verticalAngle);
+
         // set direction of camera
         playerCamera.Rotate(new Vector3(verticalAngle - directionTempVert, 0, 0));
     }
