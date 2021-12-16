@@ -30,8 +30,8 @@ public class movement : MonoBehaviour
     // global vars to be refrenced in multiple functions
     private Vector3 playerMovement;
     private Vector2 look;
-    private Vector3 gravityEffect;
-    private Vector3 currentVerticalMovement;
+    private float gravityEffect;
+    private float currentVerticalMovement;
 
     // Start is called before the first frame update
     private void Start()
@@ -48,8 +48,8 @@ public class movement : MonoBehaviour
         // initalize globar vars
         look = new Vector2(0, 0);
         playerMovement = new Vector3(0, 0, 0);
-        gravityEffect = new Vector3(0, 0, 0);
-        currentVerticalMovement = new Vector3(0, 0, 0);
+        gravityEffect = 0;
+        currentVerticalMovement = 0;
 
         // lock cursor to center of screen
         Cursor.lockState = CursorLockMode.Locked;
@@ -87,23 +87,23 @@ public class movement : MonoBehaviour
         // calculate gravity movement
         if(!isGrounded())
         {
-            gravityEffect += Physics.gravity * Time.fixedDeltaTime;
+            gravityEffect += Physics.gravity.y * Time.fixedDeltaTime;
         }
         else
         {
-            gravityEffect = Physics.gravity * Time.fixedDeltaTime;
-            currentVerticalMovement = new Vector3(0, 0, 0);
+            gravityEffect = Physics.gravity.y * Time.fixedDeltaTime;
+            currentVerticalMovement = 0;
         }
         currentVerticalMovement += gravityEffect * Time.fixedDeltaTime;
 
         // jump function
         if(isGrounded() && Input.GetButtonDown("Jump"))
         {
-            currentVerticalMovement += new Vector3(0, jumpInitialVelocity, 0);
+            currentVerticalMovement += jumpInitialVelocity;
         }
 
         // add in the vertical component of movement
-        currentMovement += currentVerticalMovement;
+        currentMovement += new Vector3(0, currentVerticalMovement, 0);
 
         // add wasd forward backward left right movement controls to player
         playerMovement = transform.TransformDirection(playerMovement);
