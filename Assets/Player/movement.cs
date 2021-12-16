@@ -9,17 +9,23 @@ public class movement : MonoBehaviour
     private CharacterController playerController;
     private Transform playerCamera;
 
-    // script public attribute variables
-    [SerializeField]
-    private Vector3 movementSpeed = new Vector3(1, 1, 1);
-    [SerializeField]
-    private Vector2 lookSpeed = new Vector2(1, 1);
+    // script inspector attribute variables
+    [SerializeField, Range(0f, 100f)]
+    private float movementSpeedForward = 50f;
+    [SerializeField, Range(0f, 100f)]
+    private float movementSpeedSideways = 50f;
+    [SerializeField, Range(0f, 5f)]
+    private float lookSpeed = 1f;
     [SerializeField, Range(5f, 90f)]
     private float lookUpperLimit = 85f;
     [SerializeField, Range(-90f, -5f)]
     private float lookLowerLimit = -85f;
-    [SerializeField, Range(0f, 10f)]
+    [SerializeField, Range(0f, 1f)]
     private float jumpInitialVelocity = 1f;
+
+    // script private condensed vars
+    private Vector3 movementSpeed;
+
 
     // global vars to be refrenced in multiple functions
     private Vector3 playerMovement;
@@ -47,6 +53,9 @@ public class movement : MonoBehaviour
 
         // lock cursor to center of screen
         Cursor.lockState = CursorLockMode.Locked;
+
+        // condense vars
+        movementSpeed = new Vector3(movementSpeedForward, 0, movementSpeedSideways);
     }
 
     // Update is called once per frame
@@ -61,7 +70,7 @@ public class movement : MonoBehaviour
         float directionTempVert = playerCamera.eulerAngles.x;
         // query current direction, normalize, and add movement
         float verticalAngle = normalizeAngle(playerCamera.rotation.eulerAngles.x);
-        verticalAngle += Vector2.Scale(look, lookSpeed).y;
+        verticalAngle += Vector2.Scale(look, new Vector2(lookSpeed, lookSpeed)).y;
         // clamp to possible range and denormalize
         verticalAngle = Mathf.Clamp(verticalAngle, lookLowerLimit, lookUpperLimit);
         verticalAngle = denormalizeAngle(verticalAngle);
@@ -104,7 +113,7 @@ public class movement : MonoBehaviour
         playerController.Move(currentMovement);
 
         // rotate player horizontally to look at mouse
-        transform.Rotate(new Vector3(0, Vector2.Scale(look, lookSpeed).x, 0));
+        transform.Rotate(new Vector3(0, Vector2.Scale(look, new Vector2(lookSpeed, lookSpeed)).x, 0));
     }
 
     // normalize angle to return between -180 and 180, centered on horizon with negative values facing down
