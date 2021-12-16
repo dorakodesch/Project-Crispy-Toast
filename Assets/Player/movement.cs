@@ -76,19 +76,19 @@ public class movement : MonoBehaviour
         Vector3 currentMovement = new Vector3(0, 0, 0);
 
         // calculate gravity movement
-        if(!playerController.isGrounded)
+        if(!isGrounded())
         {
             gravityEffect += Physics.gravity * Time.fixedDeltaTime;
         }
         else
         {
-            gravityEffect = new Vector3(0, 0, 0);
+            gravityEffect = Physics.gravity * Time.fixedDeltaTime;
             currentVerticalMovement = new Vector3(0, 0, 0);
         }
         currentVerticalMovement += gravityEffect * Time.fixedDeltaTime;
 
         // jump function
-        if(!playerController.isGrounded && Input.GetButtonDown("Jump"))
+        if(isGrounded() && Input.GetButtonDown("Jump"))
         {
             currentVerticalMovement += new Vector3(0, jumpInitialVelocity, 0);
         }
@@ -119,5 +119,10 @@ public class movement : MonoBehaviour
     {
         angle = -(-360f + angle) % 360f;
         return angle;
+    }
+
+    bool isGrounded()
+    {
+        return playerController.isGrounded;
     }
 }
