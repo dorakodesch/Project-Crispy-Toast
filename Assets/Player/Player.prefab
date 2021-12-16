@@ -111,8 +111,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 59ddeaa5fb1848e40a0e85a19786fdbd, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  movementSpeed: {x: 100, y: 100, z: 100}
-  lookSpeed: {x: 1, y: 1}
+  movementSpeedForward: 50
+  movementSpeedSideways: 50
+  lookSpeed: 1
   lookUpperLimit: 85
   lookLowerLimit: -85
   jumpInitialVelocity: 0.5
