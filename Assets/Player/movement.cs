@@ -5,6 +5,10 @@ using UnityEngine.UI;
 
 public class movement : MonoBehaviour
 {
+    // exposed script vars
+    [HideInInspector]
+    public bool movementOverride = false;
+
     // refrence environment variables
     private CharacterController playerController;
     private Transform playerCamera;
@@ -119,7 +123,8 @@ public class movement : MonoBehaviour
         }
 
         // move the player based the the movement for the current physics update
-        playerController.Move(currentMovement);
+        if(!movementOverride)
+            playerController.Move(currentMovement);
 
         // rotate player horizontally to look at mouse
         transform.Rotate(new Vector3(0, Vector2.Scale(look, new Vector2(lookSpeed, lookSpeed)).x, 0));
