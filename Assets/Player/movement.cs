@@ -22,6 +22,8 @@ public class movement : MonoBehaviour
     private float lookLowerLimit = -85f;
     [SerializeField, Range(0f, 1f)]
     private float jumpInitialVelocity = 1f;
+    [SerializeField, Range(1, 3)]
+    public float sprintMutliplier = 1f;
 
     // script private condensed vars
     private Vector3 movementSpeed;
@@ -111,6 +113,10 @@ public class movement : MonoBehaviour
         // add wasd forward backward left right movement controls to player
         playerMovement = transform.TransformDirection(playerMovement);
         currentMovement += Vector3.Scale(playerMovement, movementSpeed) * Time.fixedDeltaTime;
+        if(!Input.GetButton("Sprint"))
+        {
+            currentMovement *= sprintMutliplier;
+        }
 
         // move the player based the the movement for the current physics update
         playerController.Move(currentMovement);
