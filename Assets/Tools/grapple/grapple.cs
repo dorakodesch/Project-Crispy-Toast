@@ -1,5 +1,3 @@
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 
 public class grapple : MonoBehaviour
@@ -19,12 +17,12 @@ public class grapple : MonoBehaviour
         if (Physics.Raycast(forward, out hit, range, layer))
         {
             // run launch function with hit
-            launch(hit.point);
+            attachGrapple(hit.point);
         }
     }
 
     // hook launch function
-    void launch(Vector3 target)
+    void attachGrapple(Vector3 target)
     {
 
     }
