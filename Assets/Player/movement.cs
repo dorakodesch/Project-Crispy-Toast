@@ -110,7 +110,6 @@ public class movement : MonoBehaviour
         if (jumpRayHit.distance <= jumpSenseRange && Input.GetButtonDown("Jump"))
         if(isGrounded() && Input.GetButtonDown("Jump"))
         {
-            currentVerticalMovement += new Vector3(0, jumpInitialVelocity, 0);
             Debug.Log("Jump");
             currentVerticalMovement += jumpInitialVelocity;
         }
