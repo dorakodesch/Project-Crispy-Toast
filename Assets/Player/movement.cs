@@ -9,25 +9,33 @@ public class movement : MonoBehaviour
     private CharacterController playerController;
     private Transform playerCamera;
 
-    // script public attribute variables
-    [SerializeField]
-    private Vector3 movementSpeed = new Vector3(1, 1, 1);
-    [SerializeField]
-    private Vector2 lookSpeed = new Vector2(1, 1);
+    // script inspector attribute variables
+    [SerializeField, Range(0f, 100f)]
+    private float movementSpeedForward = 50f;
+    [SerializeField, Range(0f, 100f)]
+    private float movementSpeedSideways = 50f;
+    [SerializeField, Range(0f, 5f)]
+    private float lookSpeed = 1f;
     [SerializeField, Range(5f, 90f)]
     private float lookUpperLimit = 85f;
     [SerializeField, Range(-90f, -5f)]
     private float lookLowerLimit = -85f;
-    [SerializeField, Range(0f, 10f)]
+    [SerializeField, Range(0f, 1f)]
     private float jumpInitialVelocity = 1f;
     [SerializeField, Range(0f, 1f)]
     private float jumpSenseRange = .1f;
+    [SerializeField, Range(1, 3)]
+    public float sprintMutliplier = 1f;
+
+    // script private condensed vars
+    private Vector3 movementSpeed;
+
 
     // global vars to be refrenced in multiple functions
     private Vector3 playerMovement;
     private Vector2 look;
-    private Vector3 gravityEffect;
-    private Vector3 currentVerticalMovement;
+    private float gravityEffect;
+    private float currentVerticalMovement;
 
     // Start is called before the first frame update
     private void Start()
@@ -44,11 +52,14 @@ public class movement : MonoBehaviour
         // initalize globar vars
         look = new Vector2(0, 0);
         playerMovement = new Vector3(0, 0, 0);
-        gravityEffect = new Vector3(0, 0, 0);
-        currentVerticalMovement = new Vector3(0, 0, 0);
+        gravityEffect = 0;
+        currentVerticalMovement = 0;
 
         // lock cursor to center of screen
         Cursor.lockState = CursorLockMode.Locked;
+
+        // condense vars
+        movementSpeed = new Vector3(movementSpeedForward, 0, movementSpeedSideways);
     }
 
     // Update is called once per frame
@@ -61,12 +72,15 @@ public class movement : MonoBehaviour
         // rotate camera vertically to look up and down with mouse
         // set current looking direction as temp var
         float directionTempVert = playerCamera.eulerAngles.x;
+
         // query current direction, normalize, and add movement
         float verticalAngle = normalizeAngle(playerCamera.rotation.eulerAngles.x);
-        verticalAngle += Vector2.Scale(look, lookSpeed).y;
+        verticalAngle += Vector2.Scale(look, new Vector2(lookSpeed, lookSpeed)).y;
+
         // clamp to possible range and denormalize
         verticalAngle = Mathf.Clamp(verticalAngle, lookLowerLimit, lookUpperLimit);
         verticalAngle = denormalizeAngle(verticalAngle);
+
         // set direction of camera
         playerCamera.Rotate(new Vector3(verticalAngle - directionTempVert, 0, 0));
     }
@@ -78,14 +92,14 @@ public class movement : MonoBehaviour
         Vector3 currentMovement = new Vector3(0, 0, 0);
 
         // calculate gravity movement
-        if(!playerController.isGrounded)
+        if(!isGrounded())
         {
-            gravityEffect += Physics.gravity * Time.fixedDeltaTime;
+            gravityEffect += Physics.gravity.y * Time.fixedDeltaTime;
         }
         else
         {
-            gravityEffect = new Vector3(0, 0, 0);
-            currentVerticalMovement = new Vector3(0, 0, 0);
+            gravityEffect = Physics.gravity.y * Time.fixedDeltaTime;
+            currentVerticalMovement = 0;
         }
         currentVerticalMovement += gravityEffect * Time.fixedDeltaTime;
 
@@ -94,23 +108,29 @@ public class movement : MonoBehaviour
         Physics.Raycast(transform.position, transform.TransformDirection(Vector3.down + new Vector3(0f, -playerController.height / 2, 0f)) * 1f, out jumpRayHit, 1f);
         Debug.DrawRay(transform.position, transform.TransformDirection(Vector3.down + new Vector3(0f, -playerController.height / 2, 0f)) * 1f, Color.green);
         if (jumpRayHit.distance <= jumpSenseRange && Input.GetButtonDown("Jump"))
+        if(isGrounded() && Input.GetButtonDown("Jump"))
         {
             currentVerticalMovement += new Vector3(0, jumpInitialVelocity, 0);
             Debug.Log("Jump");
+            currentVerticalMovement += jumpInitialVelocity;
         }
 
         // add in the vertical component of movement
-        currentMovement += currentVerticalMovement;
+        currentMovement += new Vector3(0, currentVerticalMovement, 0);
 
         // add wasd forward backward left right movement controls to player
         playerMovement = transform.TransformDirection(playerMovement);
         currentMovement += Vector3.Scale(playerMovement, movementSpeed) * Time.fixedDeltaTime;
+        if(!Input.GetButton("Sprint"))
+        {
+            currentMovement *= sprintMutliplier;
+        }
 
         // move the player based the the movement for the current physics update
         playerController.Move(currentMovement);
 
         // rotate player horizontally to look at mouse
-        transform.Rotate(new Vector3(0, Vector2.Scale(look, lookSpeed).x, 0));
+        transform.Rotate(new Vector3(0, Vector2.Scale(look, new Vector2(lookSpeed, lookSpeed)).x, 0));
     }
 
     // normalize angle to return between -180 and 180, centered on horizon with negative values facing down
@@ -125,5 +145,10 @@ public class movement : MonoBehaviour
     {
         angle = -(-360f + angle) % 360f;
         return angle;
+    }
+
+    bool isGrounded()
+    {
+        return playerController.isGrounded;
     }
 }
