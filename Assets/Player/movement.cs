@@ -1,28 +1,24 @@
 // script must be attached to the player object in order to function properly
+using System;
 using UnityEngine;
-using UnityEngine.InputSystem;
+using UnityEngine.UI;
 
 public class movement : MonoBehaviour
 {
-    // button pressed variables
-    private bool jumpNext = false;
-    private bool sprintNext = false;
-
-    // exposed script variables
+    // exposed script vars
     [HideInInspector]
     public bool movementOverride = false;
 
     // refrence environment variables
     private CharacterController playerController;
     private Transform playerCamera;
-    public InputMasterActions inputMaster;
 
     // script inspector attribute variables
     [SerializeField, Range(0f, 100f)]
     private float movementSpeedForward = 50f;
     [SerializeField, Range(0f, 100f)]
     private float movementSpeedSideways = 50f;
-    [SerializeField, Range(0f, 1f)]
+    [SerializeField, Range(0f, 5f)]
     private float lookSpeed = 1f;
     [SerializeField, Range(5f, 90f)]
     private float lookUpperLimit = 85f;
@@ -36,18 +32,15 @@ public class movement : MonoBehaviour
     // script private condensed vars
     private Vector3 movementSpeed;
 
+
     // global vars to be refrenced in multiple functions
     private Vector3 playerMovement;
     private Vector2 look;
     private float gravityEffect;
     private float currentVerticalMovement;
 
-    // create input system catching variables
-    private Vector3 inputMovement = new Vector3(0, 0, 0);
-    private Vector2 inputLook = new Vector2(0, 0);
-
-    // Awake is called before start
-    private void Awake()
+    // Start is called before the first frame update
+    private void Start()
     {
         // get the refrence for the character controller
         playerController = this.GetComponent<CharacterController>();
@@ -75,8 +68,8 @@ public class movement : MonoBehaviour
     private void Update()
     {
         // get mouse and keyboard input
-        look = inputLook;
-        playerMovement = inputMovement;
+        look = new Vector2(Input.GetAxis("Mouse X"), Input.GetAxis("Mouse Y"));
+        playerMovement = new Vector3(Input.GetAxis("Horizontal"), 0, Input.GetAxis("Vertical"));
 
         // rotate camera vertically to look up and down with mouse
         // set current looking direction as temp var
@@ -101,8 +94,10 @@ public class movement : MonoBehaviour
         Vector3 currentMovement = new Vector3(0, 0, 0);
 
         // calculate gravity movement
-        if(!playerController.isGrounded)
+        if(!isGrounded())
+        {
             gravityEffect += Physics.gravity.y * Time.fixedDeltaTime;
+        }
         else
         {
             gravityEffect = Physics.gravity.y * Time.fixedDeltaTime;
@@ -110,11 +105,10 @@ public class movement : MonoBehaviour
         }
         currentVerticalMovement += gravityEffect * Time.fixedDeltaTime;
 
-        // jump
-        if(jumpNext)
+        // jump function
+        if(isGrounded() && Input.GetButtonDown("Jump"))
         {
             currentVerticalMovement += jumpInitialVelocity;
-            jumpNext = false;
         }
 
         // add in the vertical component of movement
@@ -123,8 +117,10 @@ public class movement : MonoBehaviour
         // add wasd forward backward left right movement controls to player
         playerMovement = transform.TransformDirection(playerMovement);
         currentMovement += Vector3.Scale(playerMovement, movementSpeed) * Time.fixedDeltaTime;
-        if(sprintNext)
+        if(!Input.GetButton("Sprint"))
+        {
             currentMovement *= sprintMutliplier;
+        }
 
         // move the player based the the movement for the current physics update
         if(!movementOverride)
@@ -148,26 +144,8 @@ public class movement : MonoBehaviour
         return angle;
     }
 
-    // input manager functions
-    public void Movement(InputAction.CallbackContext context)
+    bool isGrounded()
     {
-        inputMovement = new Vector3(context.ReadValue<Vector2>().x, 0, context.ReadValue<Vector2>().y);
-    }
-    public void Look(InputAction.CallbackContext context)
-    {
-        inputLook = context.ReadValue<Vector2>();
-    }
-
-    // jump function
-    public void Jump(InputAction.CallbackContext context)
-    {
-        if (playerController.isGrounded)
-            jumpNext = true;
-    }
-
-    public void Sprint(InputAction.CallbackContext context)
-    {
-        if(context.started || context.canceled)
-            sprintNext = !sprintNext;
+        return playerController.isGrounded;
     }
 }
