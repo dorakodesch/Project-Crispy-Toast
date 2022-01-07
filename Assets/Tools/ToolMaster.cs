@@ -2,16 +2,16 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class ToolMaster : MonoBehaviour
+public abstract class ToolMaster : MonoBehaviour
 {
     // Fire is called from parent object
-    protected void Fire()
+    public virtual void Fire(Ray forward)
     {
 
     }
 
     // Aim is called froom parent object
-    protected void Aim()
+    public virtual void Aim(Ray forward)
     {
 
     }
