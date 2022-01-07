@@ -1,6 +1,6 @@
 using UnityEngine;
 
-public class grapple : MonoBehaviour
+public class grapple : ToolMaster
 {
     // inspector fields
     [SerializeField]
@@ -8,7 +8,7 @@ public class grapple : MonoBehaviour
     public LayerMask layer;
 
     // fire function
-    public void fire(Ray forward)
+    public override void Fire(Ray forward)
     {
         // create hit
         RaycastHit hit;
@@ -19,6 +19,12 @@ public class grapple : MonoBehaviour
             // run launch function with hit
             attachGrapple(hit.point);
         }
+    }
+
+    // aim function
+    public override void Aim(Ray forward)
+    {
+        return;
     }
 
     // hook launch function
