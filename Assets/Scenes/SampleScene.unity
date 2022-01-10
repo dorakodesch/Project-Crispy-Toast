@@ -753,6 +753,10 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: -8256809588335000178, guid: 30a465923c3480e4a860e357b6511ca9, type: 3}
+      propertyPath: layer.m_Bits
+      value: 8
+      objectReference: {fileID: 0}
     - target: {fileID: 2524120182379323260, guid: 30a465923c3480e4a860e357b6511ca9, type: 3}
       propertyPath: movementSpeed.x
       value: 25
