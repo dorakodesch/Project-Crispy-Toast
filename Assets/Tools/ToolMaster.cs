@@ -1,18 +1,30 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.Events;
 
-public abstract class ToolMaster : MonoBehaviour
+public class ToolMaster : MonoBehaviour
 {
-    // Fire is called from parent object
-    public virtual void Fire(Ray forward)
-    {
+    // Create unity events for function calls
+    public UnityEvent aimFunc;
+    public UnityEvent fireFunc;
+    public UnityEvent instFunc;
 
+    // Awake is called when the object is instantiated
+    private void Awake()
+    {
+        instFunc.Invoke();
+    }
+
+    // Fire is called from parent object
+    public void Fire(Ray forward)
+    {
+        fireFunc.Invoke();
     }
 
     // Aim is called froom parent object
-    public virtual void Aim(Ray forward)
+    public void Aim(Ray forward)
     {
-
+        aimFunc.Invoke();
     }
 }

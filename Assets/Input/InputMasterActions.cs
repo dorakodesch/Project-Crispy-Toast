@@ -49,6 +49,14 @@ public class @InputMasterActions : IInputActionCollection, IDisposable
                     ""expectedControlType"": ""Button"",
                     ""processors"": """",
                     ""interactions"": """"
+                },
+                {
+                    ""name"": ""Switch In Hand"",
+                    ""type"": ""Value"",
+                    ""id"": ""78d5586e-9a38-4d70-9ee9-7328288830a8"",
+                    ""expectedControlType"": ""Vector2"",
+                    ""processors"": ""NormalizeVector2"",
+                    ""interactions"": """"
                 }
             ],
             ""bindings"": [
@@ -183,6 +191,50 @@ public class @InputMasterActions : IInputActionCollection, IDisposable
                     ""action"": ""Look"",
                     ""isComposite"": false,
                     ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""e5b8cebc-3896-4393-ba8a-109d2d6840d5"",
+                    ""path"": ""<Mouse>/scroll"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": ""Keyboard and Mouse"",
+                    ""action"": ""Switch In Hand"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": ""1D Axis"",
+                    ""id"": ""57df3fe6-a0a5-4576-b792-a8f0b2e8e547"",
+                    ""path"": ""1DAxis"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""Switch In Hand"",
+                    ""isComposite"": true,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": ""negative"",
+                    ""id"": ""ac92c273-b9e6-4e42-b12e-e68b86a7234e"",
+                    ""path"": ""<Gamepad>/leftShoulder"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": ""Controller"",
+                    ""action"": ""Switch In Hand"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": true
+                },
+                {
+                    ""name"": ""positive"",
+                    ""id"": ""1ff669ab-1cc6-48d1-8479-89a089dc9e8d"",
+                    ""path"": ""<Gamepad>/rightShoulder"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": ""Controller"",
+                    ""action"": ""Switch In Hand"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": true
                 }
             ]
         }
@@ -223,6 +275,7 @@ public class @InputMasterActions : IInputActionCollection, IDisposable
         m_Player_Look = m_Player.FindAction("Look", throwIfNotFound: true);
         m_Player_Jump = m_Player.FindAction("Jump", throwIfNotFound: true);
         m_Player_Sprint = m_Player.FindAction("Sprint", throwIfNotFound: true);
+        m_Player_SwitchInHand = m_Player.FindAction("Switch In Hand", throwIfNotFound: true);
     }
 
     public void Dispose()
@@ -276,6 +329,7 @@ public class @InputMasterActions : IInputActionCollection, IDisposable
     private readonly InputAction m_Player_Look;
     private readonly InputAction m_Player_Jump;
     private readonly InputAction m_Player_Sprint;
+    private readonly InputAction m_Player_SwitchInHand;
     public struct PlayerActions
     {
         private @InputMasterActions m_Wrapper;
@@ -284,6 +338,7 @@ public class @InputMasterActions : IInputActionCollection, IDisposable
         public InputAction @Look => m_Wrapper.m_Player_Look;
         public InputAction @Jump => m_Wrapper.m_Player_Jump;
         public InputAction @Sprint => m_Wrapper.m_Player_Sprint;
+        public InputAction @SwitchInHand => m_Wrapper.m_Player_SwitchInHand;
         public InputActionMap Get() { return m_Wrapper.m_Player; }
         public void Enable() { Get().Enable(); }
         public void Disable() { Get().Disable(); }
@@ -305,6 +360,9 @@ public class @InputMasterActions : IInputActionCollection, IDisposable
                 @Sprint.started -= m_Wrapper.m_PlayerActionsCallbackInterface.OnSprint;
                 @Sprint.performed -= m_Wrapper.m_PlayerActionsCallbackInterface.OnSprint;
                 @Sprint.canceled -= m_Wrapper.m_PlayerActionsCallbackInterface.OnSprint;
+                @SwitchInHand.started -= m_Wrapper.m_PlayerActionsCallbackInterface.OnSwitchInHand;
+                @SwitchInHand.performed -= m_Wrapper.m_PlayerActionsCallbackInterface.OnSwitchInHand;
+                @SwitchInHand.canceled -= m_Wrapper.m_PlayerActionsCallbackInterface.OnSwitchInHand;
             }
             m_Wrapper.m_PlayerActionsCallbackInterface = instance;
             if (instance != null)
@@ -321,6 +379,9 @@ public class @InputMasterActions : IInputActionCollection, IDisposable
                 @Sprint.started += instance.OnSprint;
                 @Sprint.performed += instance.OnSprint;
                 @Sprint.canceled += instance.OnSprint;
+                @SwitchInHand.started += instance.OnSwitchInHand;
+                @SwitchInHand.performed += instance.OnSwitchInHand;
+                @SwitchInHand.canceled += instance.OnSwitchInHand;
             }
         }
     }
@@ -349,5 +410,6 @@ public class @InputMasterActions : IInputActionCollection, IDisposable
         void OnLook(InputAction.CallbackContext context);
         void OnJump(InputAction.CallbackContext context);
         void OnSprint(InputAction.CallbackContext context);
+        void OnSwitchInHand(InputAction.CallbackContext context);
     }
 }
