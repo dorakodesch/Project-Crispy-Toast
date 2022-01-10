@@ -19,12 +19,6 @@ public class toolFunctions : MonoBehaviour
         replaceHand();
     }
 
-    // Update is called once per frame
-    void Update()
-    {
-
-    }
-
     // Change object function
     public void changeInHand(InputAction.CallbackContext context)
     {
@@ -50,8 +44,22 @@ public class toolFunctions : MonoBehaviour
         if(currentTool != null)
             Destroy(currentTool);
         currentTool = Instantiate(tools[(int)current]);
-
+        
         // Set parent and position to that of player
         currentTool.GetComponent<Transform>().SetParent(this.transform, false);
+    }
+
+    // Called oon fire
+    public void Fire(InputAction.CallbackContext context)
+    {
+        Ray forward = new Ray(this.transform.position, this.GetComponent<Camera>().transform.TransformDirection(Vector3.forward));
+        currentTool.GetComponent<ToolMaster>().Fire(forward);
+    }
+
+    // Called on aim
+    public void Aim(InputAction.CallbackContext context)
+    {
+        Ray forward = new Ray(this.transform.position, this.GetComponent<Camera>().transform.TransformDirection(Vector3.forward));
+        currentTool.GetComponent<ToolMaster>().Aim(forward);
     }
 }
