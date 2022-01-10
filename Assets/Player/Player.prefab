@@ -14,7 +14,6 @@ GameObject:
   - component: {fileID: 6475731024366280159}
   - component: {fileID: 2524120182379323260}
   - component: {fileID: 7573478654142293025}
-  - component: {fileID: -8256809588335000178}
   - component: {fileID: 814735866816178900}
   - component: {fileID: 1523678162880771359}
   m_Layer: 0
@@ -140,22 +139,6 @@ CharacterController:
   m_SkinWidth: 0.08
   m_MinMoveDistance: 0.001
   m_Center: {x: 0, y: 0, z: 0}
---- !u!114 &-8256809588335000178
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 5427840541746909175}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: f062f81e8c676554f9af0e1f480f39d2, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  range: 100
-  layer:
-    serializedVersion: 2
-    m_Bits: 0
 --- !u!114 &814735866816178900
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -168,8 +151,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 8cb1e0612da216f44a8c182a57dfb11e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  current: 0
-  objIndex: 0
+  tools:
+  - {fileID: 0}
+  - {fileID: 3199666446701123628, guid: e21ea4c71aca594479569cf43573c89a, type: 3}
 --- !u!114 &1523678162880771359
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -259,6 +243,22 @@ MonoBehaviour:
         m_CallState: 2
     m_ActionId: 25eeee88-95bd-42ee-87e7-4327eae63df6
     m_ActionName: Player/Sprint[/Keyboard/leftShift]
+  - m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: 814735866816178900}
+        m_TargetAssemblyTypeName: toolFunctions, Assembly-CSharp
+        m_MethodName: changeInHand
+        m_Mode: 0
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+    m_ActionId: 78d5586e-9a38-4d70-9ee9-7328288830a8
+    m_ActionName: Player/Switch In Hand[/Mouse/scroll]
   m_NeverAutoSwitchControlSchemes: 0
   m_DefaultControlScheme: 
   m_DefaultActionMap: Player
