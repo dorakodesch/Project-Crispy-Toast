@@ -12,7 +12,7 @@ public class RaycastFromCamera : MonoBehaviour
 
         if (Input.GetMouseButtonDown(0))
         {
-            Physics.Raycast(playerCamera.transform.position, playerCamera.transform.forward, out hit, 300.0f);
+            Physics.Raycast(playerCamera.transform.position, playerCamera.transform.forward, out hit, 1000.0f);
             Transform objectHit = hit.collider.transform;
             if (objectHit != null)
             {
