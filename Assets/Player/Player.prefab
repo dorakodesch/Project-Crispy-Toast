@@ -153,7 +153,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   tools:
-  - {fileID: 0}
+  - {fileID: 124189657743381759, guid: c47846bf906ec5844a7d80ffd950e9c3, type: 3}
   - {fileID: 3199666446701123628, guid: e21ea4c71aca594479569cf43573c89a, type: 3}
 --- !u!114 &1523678162880771359
 MonoBehaviour:
