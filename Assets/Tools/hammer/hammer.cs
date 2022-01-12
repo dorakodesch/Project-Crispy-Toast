@@ -4,15 +4,21 @@ using UnityEngine;
 
 public class hammer : MonoBehaviour
 {
-    // Start is called before the first frame update
-    void Start()
+    // Return null from aiming
+    public void Aim()
     {
-        
+        return;
     }
 
-    // Update is called once per frame
-    void Update()
+    // Destroy objects from hammer hit with fire
+    public void Fire()
     {
-        
+
+    }
+
+    // Return null from instantiation
+    public void Inst()
+    {
+        return;
     }
 }
