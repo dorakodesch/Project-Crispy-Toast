@@ -16,6 +16,6 @@ public class RobotNavigation : MonoBehaviour
 
 	private void Update()
 	{
-		agent.SetDestination(player.position + Vector3.right);
+		agent.SetDestination(player.position + Vector3.right * 1.1f);
 	}
 }
