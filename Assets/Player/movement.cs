@@ -30,6 +30,8 @@ public class movement : MonoBehaviour
     private float lookLowerLimit = -85f;
     [SerializeField, Range(0f, 1f)]
     private float jumpInitialVelocity = 1f;
+    [SerializeField, Range(0f, 1f)]
+    private float jumpSenseRange = .1f;
     [SerializeField, Range(1, 3)]
     public float sprintMutliplier = 1f;
 
@@ -113,6 +115,7 @@ public class movement : MonoBehaviour
         // jump
         if(jumpNext)
         {
+            Debug.Log("Jump");
             currentVerticalMovement += jumpInitialVelocity;
             jumpNext = false;
         }
