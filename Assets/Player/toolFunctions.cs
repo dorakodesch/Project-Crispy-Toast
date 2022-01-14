@@ -1,4 +1,3 @@
-using System;
 using UnityEngine;
 using UnityEngine.InputSystem;
 
@@ -49,17 +48,29 @@ public class toolFunctions : MonoBehaviour
         currentTool.GetComponent<Transform>().SetParent(this.transform, false);
     }
 
-    // Called oon fire
+    // Called on fire button down
     public void Fire(InputAction.CallbackContext context)
     {
-        Ray forward = new Ray(this.transform.position, this.GetComponent<Camera>().transform.TransformDirection(Vector3.forward));
-        currentTool.GetComponent<ToolMaster>().Fire(forward);
+        if(context.started)
+        {
+            Transform cam = this.GetComponentInChildren<Camera>().transform;
+            Ray forward = new Ray(cam.position, cam.TransformDirection(Vector3.forward));
+            currentTool.GetComponent<ToolMaster>().Fire(forward);
+        }
     }
 
     // Called on aim
     public void Aim(InputAction.CallbackContext context)
     {
-        Ray forward = new Ray(this.transform.position, this.GetComponent<Camera>().transform.TransformDirection(Vector3.forward));
-        currentTool.GetComponent<ToolMaster>().Aim(forward);
+        if(context.started)
+        {
+            Ray forward = new Ray(this.transform.position, this.GetComponent<Camera>().transform.TransformDirection(Vector3.forward));
+            currentTool.GetComponent<ToolMaster>().Aim(forward, true);
+        }
+        if(context.canceled)
+        {
+            Ray forward = new Ray(this.transform.position, this.GetComponent<Camera>().transform.TransformDirection(Vector3.forward));
+            currentTool.GetComponent<ToolMaster>().Aim(forward, false);
+        }
     }
 }
