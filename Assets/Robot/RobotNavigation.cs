@@ -1,4 +1,4 @@
-// robot movement. currently just follows the player around
+// robot movement, currently just follows the player around
 using UnityEngine;
 using UnityEngine.AI;
 
@@ -8,18 +8,19 @@ public class RobotNavigation : MonoBehaviour
 	[SerializeField]
 	Transform player;
 
+	[SerializeField, Min(1f)]
+	float distanceFromPlayer = 1.5f;
+
 	NavMeshAgent agent;
 
-	// grabbing any references + other setup
 	private void Start()
 	{
 		agent = GetComponent<NavMeshAgent>();
 	}
 
-	//moving around
 	private void Update()
 	{
 		// multiplying by 1.1 corrects for cube size to avoid collisions
-		agent.SetDestination(player.position + Vector3.right * 1.1f);
+		agent.SetDestination(player.position + Vector3.right * distanceFromPlayer);
 	}
 }
