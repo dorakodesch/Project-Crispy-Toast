@@ -15,7 +15,6 @@ public class hammer : MonoBehaviour
     // Destroy objects from hammer hit with fire
     public void Fire(Ray forward, Vector3 position, Quaternion rotation)
     {
-        Debug.Log("hit from hammer");
         RaycastHit hit;
         Physics.Raycast(forward, out hit, 1000.0f);
         Transform objectHit = hit.collider.transform;
