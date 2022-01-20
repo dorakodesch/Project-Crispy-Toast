@@ -20,7 +20,6 @@ public class hammer : MonoBehaviour
         Transform objectHit = hit.collider.transform;
         if (objectHit != null)
         {
-            Debug.Log(objectHit.name);
             if (objectHit.tag == "Joint")
             {
                 Destroy(objectHit.gameObject);
