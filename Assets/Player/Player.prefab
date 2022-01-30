@@ -220,7 +220,7 @@ MonoBehaviour:
   lookSpeed: 0.293
   lookUpperLimit: 85
   lookLowerLimit: -85
-  jumpInitialVelocity: 0.5
+  jumpInitialVelocity: 0.133
   sprintMutliplier: 2
 --- !u!143 &7573478654142293025
 CharacterController:

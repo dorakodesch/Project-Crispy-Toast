@@ -76,7 +76,6 @@ public class movement : MonoBehaviour
     {
         // get mouse and keyboard input
         look = inputLook;
-        Debug.Log(inputMovement);
         if (sprintNext == true && inputMovement.z > 0)
             // add sprint multiplier for forward running only
             playerMovement = Vector3.Scale(inputMovement, new Vector3(1, 1, sprintMutliplier));
