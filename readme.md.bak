@@ -18,7 +18,7 @@ push new main to origin `git push origin main` <br />
 ## Sync Branch With Current Main
 checkout branch to sync into `git checkout branch-to-update` <br />
 merge main into branch `git merge main` <br />
-resolve all merge conflicts if needed <br />
+resolve all merge conflicts <br />
 
 ## Complete a Task
 sync fork with upstream <br />

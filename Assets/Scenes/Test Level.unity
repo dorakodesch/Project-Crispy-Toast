@@ -38,7 +38,11 @@ RenderSettings:
   m_ReflectionIntensity: 1
   m_CustomReflection: {fileID: 0}
   m_Sun: {fileID: 0}
+<<<<<<< HEAD
   m_IndirectSpecularColor: {r: 3643.575, g: 2874.6038, b: 3057.9275, a: 1}
+=======
+  m_IndirectSpecularColor: {r: 3640.0498, g: 2872.2812, b: 3055.5938, a: 1}
+>>>>>>> 266fe88abe8d1a203ffedea8a6275307f19e04d4
   m_UseRadianceAmbientProbe: 0
 --- !u!157 &3
 LightmapSettings:
@@ -556,7 +560,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 2561350850848828644, guid: f676d51139afa08499443c2ceca4bacb, type: 3}
       propertyPath: m_Name
-      value: Destructable Object
+      value: Breakable Object
       objectReference: {fileID: 0}
     - target: {fileID: 2561350850865659944, guid: f676d51139afa08499443c2ceca4bacb, type: 3}
       propertyPath: m_UseGravity
@@ -756,6 +760,14 @@ PrefabInstance:
     - target: {fileID: -8256809588335000178, guid: 30a465923c3480e4a860e357b6511ca9, type: 3}
       propertyPath: layer.m_Bits
       value: 8
+      objectReference: {fileID: 0}
+    - target: {fileID: 814735866816178900, guid: 30a465923c3480e4a860e357b6511ca9, type: 3}
+      propertyPath: tools.Array.data[0]
+      value: 
+      objectReference: {fileID: 4944682382567859636, guid: c47846bf906ec5844a7d80ffd950e9c3, type: 3}
+    - target: {fileID: 1523678162880771359, guid: 30a465923c3480e4a860e357b6511ca9, type: 3}
+      propertyPath: m_DefaultControlScheme
+      value: 
       objectReference: {fileID: 0}
     - target: {fileID: 2524120182379323260, guid: 30a465923c3480e4a860e357b6511ca9, type: 3}
       propertyPath: movementSpeed.x
