@@ -76,7 +76,11 @@ public class movement : MonoBehaviour
     {
         // get mouse and keyboard input
         look = inputLook;
-        playerMovement = inputMovement;
+        if (sprintNext == true && inputMovement.z > 0)
+            // add sprint multiplier for forward running only
+            playerMovement = Vector3.Scale(inputMovement, new Vector3(1, 1, sprintMutliplier));
+        else
+            playerMovement = inputMovement;
 
         // rotate camera vertically to look up and down with mouse
         // set current looking direction as temp var
@@ -123,8 +127,6 @@ public class movement : MonoBehaviour
         // add wasd forward backward left right movement controls to player
         playerMovement = transform.TransformDirection(playerMovement);
         currentMovement += Vector3.Scale(playerMovement, movementSpeed) * Time.fixedDeltaTime;
-        if(sprintNext)
-            currentMovement *= sprintMutliplier;
 
         // move the player based the the movement for the current physics update
         if(!movementOverride)
@@ -148,11 +150,13 @@ public class movement : MonoBehaviour
         return angle;
     }
 
-    // input manager functions
+    // movement function
     public void Movement(InputAction.CallbackContext context)
     {
         inputMovement = new Vector3(context.ReadValue<Vector2>().x, 0, context.ReadValue<Vector2>().y);
     }
+
+    // look function
     public void Look(InputAction.CallbackContext context)
     {
         inputLook = context.ReadValue<Vector2>();

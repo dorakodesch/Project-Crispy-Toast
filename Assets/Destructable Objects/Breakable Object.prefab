@@ -350,7 +350,7 @@ GameObject:
   - component: {fileID: 2561350850848828571}
   - component: {fileID: 1066455261073383792}
   m_Layer: 0
-  m_Name: Destructable Object
+  m_Name: Breakable Object
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0

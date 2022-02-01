@@ -4,13 +4,27 @@ Only for the toastiest floor mats.
 We are working on a project for OGPC 15 at Ida B. Wells HS.
 
 # Working With Git
-when working on a new task use `git checkout -b name-of-task-branch`
-when there is code to save use `git commit -a -m "name of completed stuff"`
-to save to remote fork use `git push origin name-of-branch`
-to pull from fork use `git pull origin name-of-branch`
-to sync upstream with your fork use `git pull upstream main` `git push origin main`
-when completed with a task, sync your branch to your origin with `git push origin name-of-branch`
-switch to main with `git checkout main`
-use `git pull upstream main` and `git push origin main` to sync main with upstream
-use `git merge name-of-branch` and resolve any conflicts
+
+## Start a New Task
+create and checkout a new branch `git checkout -b name-of-task` <br />
+commit any code changes `git commit -a -m "name of completed stuff"` <br />
+push changes on branch to remote `git push origin name-of-branch`
+
+## Sync Fork With Upstream
+switch to main branch `git checkout main` <br />
+pull upstream into main `git pull upstream main` <br />
+push new main to origin `git push origin main` <br />
+
+## Sync Branch With Current Main
+checkout branch to sync into `git checkout branch-to-update` <br />
+merge main into branch `git merge main` <br />
+resolve all merge conflicts if needed <br />
+
+## Complete a Task
+sync fork with upstream <br />
+sync branch with current main <br />
+switch to task branch `git checkout name-of-branch` <br />
+push your code to remote `git push origin name-of-branch` <br />
+switch to main `git checkout main` <br />
+merge task branch to main `git merge name-of-branch` <br />
 create a pull request from your main to upstream

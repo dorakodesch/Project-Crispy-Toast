@@ -62,14 +62,15 @@ public class toolFunctions : MonoBehaviour
     // Called on aim
     public void Aim(InputAction.CallbackContext context)
     {
-        if(context.started)
+        Transform cam = this.GetComponentInChildren<Camera>().transform;
+        if (context.started)
         {
-            Ray forward = new Ray(this.transform.position, this.GetComponent<Camera>().transform.TransformDirection(Vector3.forward));
+            Ray forward = new Ray(cam.position, cam.TransformDirection(Vector3.forward));
             currentTool.GetComponent<ToolMaster>().Aim(forward, true);
         }
         if(context.canceled)
         {
-            Ray forward = new Ray(this.transform.position, this.GetComponent<Camera>().transform.TransformDirection(Vector3.forward));
+            Ray forward = new Ray(cam.position, cam.TransformDirection(Vector3.forward));
             currentTool.GetComponent<ToolMaster>().Aim(forward, false);
         }
     }
