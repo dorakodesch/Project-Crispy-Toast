@@ -12,15 +12,17 @@ public class hammer : MonoBehaviour
     public void Fire(Ray forward, Vector3 position, Quaternion rotation)
     {
         RaycastHit hit;
-        Physics.Raycast(forward, out hit, 1000.0f);
+        bool hitSuccess = Physics.Raycast(forward, out hit, 1000.0f);
         Transform objectHit = hit.collider.transform;
-        if (objectHit != null)
+        Vector3 hitPoint = hit.point;
+        if (hitSuccess)
         {
             if (objectHit.tag == "Joint")
             {
                 Destroy(objectHit.gameObject);
             }
         }
+        return;
     }
 
     // Return null from instantiation
