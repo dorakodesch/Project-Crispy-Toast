@@ -2,10 +2,6 @@ using UnityEngine;
 
 public class hammer : MonoBehaviour
 {
-    // Create variable for player camera
-    [SerializeField]
-    private Camera playerCamera;
-
     // Return null from aiming
     public void Aim(Ray forward, Vector3 position, Quaternion rotation, bool down)
     {
