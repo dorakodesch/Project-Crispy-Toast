@@ -27,4 +27,4 @@ switch to task branch `git checkout name-of-branch` <br />
 push your code to remote `git push origin name-of-branch` <br />
 switch to main `git checkout main` <br />
 merge task branch to main `git merge name-of-branch` <br />
-create a pull request from your main to upstream
+notify me of your changes and I will pull them
