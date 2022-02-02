@@ -27,4 +27,18 @@ public class inventory : MonoBehaviour
     {
         resourceCounters[(int)type] += increment;
     }
+
+    // tool level up functions
+    public void batteryMakerLevelUp()
+    {
+        battteryMakerLevel++;
+    }
+    public void grappleLevelUp()
+    {
+        grappleLevel++;
+    }
+    public void laserLevelUp()
+    {
+        laserLevel++;
+    }
 }

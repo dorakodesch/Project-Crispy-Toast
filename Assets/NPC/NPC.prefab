@@ -46,6 +46,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 82ecd1907d8ecef4197360a2b6ae9f1d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  levelCosts:
+  - resources: 
+  toUpgrade: 0
 --- !u!64 &2723930644139526904
 MeshCollider:
   m_ObjectHideFlags: 0

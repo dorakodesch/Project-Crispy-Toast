@@ -8,22 +8,32 @@ public class NPCControl : MonoBehaviour
     // cost to upgrade INDEX IS FOR CURRENT LEVEL, NOT LEVEL UPGRADED TO
     public resourceConsumption[] levelCosts;
 
-    public void upgrade(int currentLevel, inventory.tools toUpgrade, inventory playerInventory)
+    // public variable for tool type to upgrade for this NPC
+    public inventory.tools toUpgrade;
+
+    // upgrade tool based on current level
+    public void upgrade(int currentLevel, inventory playerInventory)
     {
+        // check for enough resources
         if (checkResources(levelCosts[currentLevel], playerInventory))
         {
+            // switch for different possible tools to upgrade
             switch(toUpgrade)
             {
                 case inventory.tools.batteryMaker:
-                    playerInventory.battteryMakerLevel++;
+                    playerInventory.batteryMakerLevelUp();
                     break;
                 case inventory.tools.grapple:
-                    playerInventory.grappleLevel++;
+                    playerInventory.grappleLevelUp();
                     break;
                 case inventory.tools.laser:
-                    playerInventory.laserLevel++;
+                    playerInventory.laserLevelUp();
                     break;
             }
+        }
+        else
+        {
+            // error with not enough resources
         }
     }
 
@@ -41,13 +51,22 @@ public class NPCControl : MonoBehaviour
 }
 
 // resources needed for crafting class
+[Serializable]
 public class resourceConsumption
 {
+    [HideInInspector]
     public int[] resources;
+    public int rope;
+    public int scrap;
+    public int wire;
+    public int glass;
+    public int batteries;
+    public int crystals;
+    public int lithium;
 
     public resourceConsumption()
     {
-        resources = new int[7] { 0, 0, 0, 0, 0, 0, 0 };
+        resources = new int[7] { rope, scrap, wire, glass, batteries, crystals, lithium };
     }
 
 }
