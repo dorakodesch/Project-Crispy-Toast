@@ -3,21 +3,11 @@ using System;
 
 public class NPCControl : MonoBehaviour
 {
-    // create canvas variables for menu
-    public Canvas menu;
-
     // cost to upgrade INDEXED BY CURRENT LEVEL
     public resourceConsumption[] levelCosts;
 
     // public variable for tool type to upgrade for this NPC
     public inventory.tools toUpgrade;
-
-    // awake is called when object is enabled
-    private void Awake()
-    {
-        menu = GetComponentInChildren<Canvas>();
-        menu.worldCamera = Camera.main;
-    }
 
     // upgrade tool based on current level
     public void upgrade(int currentLevel, inventory playerInventory)
