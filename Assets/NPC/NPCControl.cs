@@ -1,11 +1,9 @@
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 using System;
 
 public class NPCControl : MonoBehaviour
 {
-    // cost to upgrade INDEX IS FOR CURRENT LEVEL, NOT LEVEL UPGRADED TO
+    // cost to upgrade INDEXED BY CURRENT LEVEL
     public resourceConsumption[] levelCosts;
 
     // public variable for tool type to upgrade for this NPC
@@ -30,15 +28,13 @@ public class NPCControl : MonoBehaviour
                     playerInventory.laserLevelUp();
                     break;
             }
-        }
-        else
-        {
-            // error with not enough resources
+            // remove resources from player
+            removeResources(levelCosts[currentLevel], playerInventory);
         }
     }
 
     // check if resources are adequate
-    public bool checkResources(resourceConsumption needed, inventory owned)
+    bool checkResources(resourceConsumption needed, inventory owned)
     {
         // iterate through resources checking if needed exceeds owned
         foreach(int i in Enum.GetValues(typeof(inventory.resources)))
@@ -47,6 +43,15 @@ public class NPCControl : MonoBehaviour
                 return false;
         }
         return true;
+    }
+
+    // remove resources spent
+    void removeResources(resourceConsumption removed, inventory owned)
+    {
+        foreach(int i in Enum.GetValues(typeof(inventory.resources)))
+        {
+            owned.resourceCounters[i] -= removed.resources[i];
+        }
     }
 }
 
