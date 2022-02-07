@@ -178,6 +178,10 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: -1692307363956806134, guid: f28876ca7a7e94c4eba1754b1e34e173, type: 3}
+      propertyPath: levelCosts.Array.size
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 1197647709168688710, guid: f28876ca7a7e94c4eba1754b1e34e173, type: 3}
       propertyPath: m_Name
       value: NPC
