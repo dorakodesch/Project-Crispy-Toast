@@ -295,24 +295,6 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 4
   m_LocalEulerAnglesHint: {x: 90, y: 0, z: 0}
---- !u!1 &634087312 stripped
-GameObject:
-  m_CorrespondingSourceObject: {fileID: 2918630962004281496, guid: a96eca9b1cb3a7b49ad1c54624e2c9b9, type: 3}
-  m_PrefabInstance: {fileID: 1970422657}
-  m_PrefabAsset: {fileID: 0}
---- !u!114 &634087313
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 634087312}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: e2fb352911f70ba48b4f6ae96c5fa865, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  resourceBreakdownRadius: 1
 --- !u!4 &759177231 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 3699637816089781355, guid: 30a465923c3480e4a860e357b6511ca9, type: 3}
@@ -415,7 +397,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   player: {fileID: 759177231}
   distanceFromPlayer: 1.5
-  resourceBreakdownRadius: 5
+  resourceBreakdownRadius: 1
 --- !u!195 &859138745
 NavMeshAgent:
   m_ObjectHideFlags: 0
