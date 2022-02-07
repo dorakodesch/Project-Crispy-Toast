@@ -6,9 +6,13 @@ public class inventory : MonoBehaviour
 {
     // create resource counters
     [HideInInspector]
-    public enum resources { rope, scrap, wire, glass, batteries, crystals, lithium}
+    public enum resources { rope, scrap, wire, glass, batteries, crystals, lithium }
     [HideInInspector]
     public int[] resourceCounters = new int[7];
+
+    // create tool types enum
+    [HideInInspector]
+    public enum tools { laser, grapple, batteryMaker }
 
     // create tool levels
     [HideInInspector]
@@ -16,7 +20,7 @@ public class inventory : MonoBehaviour
     [HideInInspector]
     public int grappleLevel = 0;
     [HideInInspector]
-    public int battteryLevel = 0;
+    public int battteryMakerLevel = 0;
 
     // increment function
     public void changeResourceCount(resources type, int increment = 1)
@@ -25,9 +29,9 @@ public class inventory : MonoBehaviour
     }
 
     // tool level up functions
-    public void batteryLevelUp()
+    public void batteryMakerLevelUp()
     {
-        battteryLevel++;
+        battteryMakerLevel++;
     }
     public void grappleLevelUp()
     {
