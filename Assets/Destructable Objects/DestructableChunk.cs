@@ -21,7 +21,7 @@ public class DestructableChunk : MonoBehaviour
                 jointsGone = false;
             }
         }
-        if (jointsGone)
+        if (jointsGone && gameObject.transform.parent != null)
         {
             gameObject.transform.parent = null;
             chunkRB = gameObject.AddComponent<Rigidbody>();
