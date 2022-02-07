@@ -34,7 +34,7 @@ public class NPCControl : MonoBehaviour
     }
 
     // check if resources are adequate
-    bool checkResources(resourceConsumption needed, inventory owned)
+    public bool checkResources(resourceConsumption needed, inventory owned)
     {
         // iterate through resources checking if needed exceeds owned
         foreach(int i in Enum.GetValues(typeof(inventory.resources)))
