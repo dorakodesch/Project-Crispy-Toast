@@ -14,13 +14,12 @@ public class inventory : MonoBehaviour
     [HideInInspector]
     public enum tools { laser, grapple, batteryMaker }
 
+    [HideInInspector]
+    public string[] toolNames = { "Laser", "Grapple", "Battery Maker" };
+
     // create tool levels
     [HideInInspector]
-    public int laserLevel = 0;
-    [HideInInspector]
-    public int grappleLevel = 0;
-    [HideInInspector]
-    public int battteryMakerLevel = 0;
+    public int[] toolLevels = { 0, 0, 0 };
 
     // increment function
     public void changeResourceCount(resources type, int increment = 1)
@@ -29,16 +28,8 @@ public class inventory : MonoBehaviour
     }
 
     // tool level up functions
-    public void batteryMakerLevelUp()
+    public void levelUpTool(tools tool)
     {
-        battteryMakerLevel++;
-    }
-    public void grappleLevelUp()
-    {
-        grappleLevel++;
-    }
-    public void laserLevelUp()
-    {
-        laserLevel++;
+        toolLevels[(int)tool]++;
     }
 }

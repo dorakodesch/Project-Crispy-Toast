@@ -9,25 +9,19 @@ public class NPCControl : MonoBehaviour
     // public variable for tool type to upgrade for this NPC
     public inventory.tools toUpgrade;
 
+    [SerializeField]
+    inventory playerInventory; 
+
     // upgrade tool based on current level
-    public void upgrade(int currentLevel, inventory playerInventory)
+    public void upgrade()
     {
+        Debug.Log("upgrade button pressed");
+        int currentLevel = playerInventory.toolLevels[(int)toUpgrade];
         // check for enough resources
         if (checkResources(levelCosts[currentLevel], playerInventory))
         {
             // switch for different possible tools to upgrade
-            switch(toUpgrade)
-            {
-                case inventory.tools.batteryMaker:
-                    playerInventory.batteryMakerLevelUp();
-                    break;
-                case inventory.tools.grapple:
-                    playerInventory.grappleLevelUp();
-                    break;
-                case inventory.tools.laser:
-                    playerInventory.laserLevelUp();
-                    break;
-            }
+            playerInventory.levelUpTool(toUpgrade);
             // remove resources from player
             removeResources(levelCosts[currentLevel], playerInventory);
         }
@@ -59,19 +53,5 @@ public class NPCControl : MonoBehaviour
 [Serializable]
 public class resourceConsumption
 {
-    [HideInInspector]
     public int[] resources;
-    public int rope;
-    public int scrap;
-    public int wire;
-    public int glass;
-    public int batteries;
-    public int crystals;
-    public int lithium;
-
-    public resourceConsumption()
-    {
-        resources = new int[7] { rope, scrap, wire, glass, batteries, crystals, lithium };
-    }
-
 }
