@@ -6,6 +6,14 @@ public class RaycastFromCamera : MonoBehaviour
 {
     [SerializeField] private Camera playerCamera;
 
+    [SerializeField]
+    NPCControl npcControl;
+
+    private void Start()
+    {
+        Debug.Log(name);
+    }
+
     void Update()
     {
         RaycastHit hit;
@@ -17,9 +25,19 @@ public class RaycastFromCamera : MonoBehaviour
             if (objectHit != null)
             {
                 Debug.Log(objectHit.name);
-                if (objectHit.tag == "Joint")
+                /*if (objectHit.tag == "Joint")
                 {
                     Destroy(objectHit.gameObject);
+                }*/
+                switch (objectHit.tag)
+                {
+                    case "Joint":
+                        Destroy(objectHit.gameObject);
+                        break;
+                    case "NPC":
+                        npcControl.OpenMenu();
+                        playerCamera.gameObject.SetActive(false);
+                        break;
                 }
             }
             

@@ -1,5 +1,6 @@
 using UnityEngine;
 using System;
+using TMPro;
 
 public class NPCControl : MonoBehaviour
 {
@@ -10,7 +11,54 @@ public class NPCControl : MonoBehaviour
     public inventory.tools toUpgrade;
 
     [SerializeField]
-    inventory playerInventory; 
+    inventory playerInventory;
+
+    // menu visuals
+    [SerializeField]
+    TextMeshProUGUI toolName, upgradeCosts;
+
+    [SerializeField]
+    Transform player;
+
+    [SerializeField]
+    Canvas menuCanvas;
+
+    bool menuOpen;
+
+    private void Start()
+    {
+        menuCanvas.gameObject.SetActive(false);
+        menuOpen = false;
+    }
+
+    private void Update()
+    {
+        if (menuOpen)
+        {
+            UpdateMenu();
+        }
+    }
+
+    private void UpdateMenu()
+    {
+        inventory.tools toolToUpgrade = toUpgrade;
+
+        // setting all texts
+        toolName.text = playerInventory.toolNames[(int)toolToUpgrade];
+        toolName.alignment = TextAlignmentOptions.Center;
+
+        resourceConsumption costs =
+            levelCosts[playerInventory.toolLevels[(int)toolToUpgrade]];
+
+        upgradeCosts.text = costs.resources[0].ToString();
+
+        for (int i = 1; i < costs.resources.Length; i++)
+        {
+            // 8 spaces between resources idk why but it works
+            upgradeCosts.text =
+                upgradeCosts.text + "        " + costs.resources[i].ToString();
+        }
+    }
 
     // upgrade tool based on current level
     public void upgrade()
@@ -46,6 +94,18 @@ public class NPCControl : MonoBehaviour
         {
             owned.resourceCounters[i] -= removed.resources[i];
         }
+    }
+
+    public void OpenMenu()
+    {
+        menuCanvas.gameObject.SetActive(true);
+        menuOpen = true;
+    }
+
+    public void CloseMenu()
+    {
+        menuCanvas.gameObject.SetActive(false);
+        menuOpen = false;
     }
 }
 

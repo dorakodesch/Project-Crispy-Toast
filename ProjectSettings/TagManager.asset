@@ -5,15 +5,15 @@ TagManager:
   serializedVersion: 2
   tags:
   - Joint
+  - NPC
   layers:
   - Default
   - TransparentFX
   - Ignore Raycast
   - Ground
-  - Grapple
   - Water
   - UI
-  - 
+  - UI
   - 
   - 
   - 

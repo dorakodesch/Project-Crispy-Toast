@@ -147,10 +147,9 @@ GameObject:
   - component: {fileID: 2723930644139526904}
   - component: {fileID: 1332182623488529032}
   - component: {fileID: -9183884948003949554}
-  - component: {fileID: 1119183966973685180}
   m_Layer: 0
   m_Name: NPC
-  m_TagString: Untagged
+  m_TagString: NPC
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -184,14 +183,12 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   levelCosts:
   - resources: 
-    rope: 0
-    scrap: 0
-    wire: 0
-    glass: 0
-    batteries: 0
-    crystals: 0
-    lithium: 0
   toUpgrade: 0
+  playerInventory: {fileID: 0}
+  toolName: {fileID: 2124529407206144145}
+  upgradeCosts: {fileID: 7576090607713495561}
+  player: {fileID: 0}
+  menuCanvas: {fileID: 3033652205708166990}
 --- !u!64 &2723930644139526904
 MeshCollider:
   m_ObjectHideFlags: 0
@@ -255,19 +252,6 @@ MeshFilter:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1197647709168688710}
   m_Mesh: {fileID: 10206, guid: 0000000000000000e000000000000000, type: 0}
---- !u!114 &1119183966973685180
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1197647709168688710}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: af2270f11d5d1394ea4bb0fe904f5b13, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  mainMenu: {fileID: 0}
 --- !u!1 &2278280372785967140
 GameObject:
   m_ObjectHideFlags: 0
