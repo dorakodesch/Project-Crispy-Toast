@@ -62,13 +62,13 @@ public class NPCControl : MonoBehaviour
     {
         int currentLevel = playerInventory.toolLevels[(int)toUpgrade];
         // check for enough resources
-        if (checkResources(levelCosts[currentLevel], playerInventory))
-        {
+        //if (checkResources(levelCosts[currentLevel], playerInventory))
+        //{
             // switch for different possible tools to upgrade
             playerInventory.levelUpTool(toUpgrade);
             // remove resources from player
             removeResources(levelCosts[currentLevel], playerInventory);
-        }
+        //}
     }
 
     // check if resources are adequate

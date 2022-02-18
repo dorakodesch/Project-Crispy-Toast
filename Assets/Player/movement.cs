@@ -22,7 +22,7 @@ public class movement : MonoBehaviour
     private float movementSpeedForward = 50f;
     [SerializeField, Range(0f, 100f)]
     private float movementSpeedSideways = 50f;
-    [SerializeField, Range(0f, 1f)]
+    [SerializeField, Range(0f, 10f)]
     private float lookSpeed = 1f;
     [SerializeField, Range(5f, 90f)]
     private float lookUpperLimit = 85f;
@@ -88,7 +88,7 @@ public class movement : MonoBehaviour
 
         // query current direction, normalize, and add movement
         float verticalAngle = normalizeAngle(playerCamera.rotation.eulerAngles.x);
-        verticalAngle += Vector2.Scale(look, new Vector2(lookSpeed, lookSpeed)).y;
+        verticalAngle += look.y * lookSpeed * Time.deltaTime;
 
         // clamp to possible range and denormalize
         verticalAngle = Mathf.Clamp(verticalAngle, lookLowerLimit, lookUpperLimit);
@@ -133,7 +133,7 @@ public class movement : MonoBehaviour
             playerController.Move(currentMovement);
 
         // rotate player horizontally to look at mouse
-        transform.Rotate(new Vector3(0, Vector2.Scale(look, new Vector2(lookSpeed, lookSpeed)).x, 0));
+        transform.Rotate(new Vector3(0, look.x * lookSpeed * Time.deltaTime, 0));
     }
 
     // normalize angle to return between -180 and 180, centered on horizon with negative values facing down

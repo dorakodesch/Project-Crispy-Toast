@@ -510,11 +510,6 @@ Canvas:
   m_CorrespondingSourceObject: {fileID: 3033652205708166990, guid: f28876ca7a7e94c4eba1754b1e34e173, type: 3}
   m_PrefabInstance: {fileID: 524687876}
   m_PrefabAsset: {fileID: 0}
---- !u!20 &524687882 stripped
-Camera:
-  m_CorrespondingSourceObject: {fileID: 5519798859172247097, guid: f28876ca7a7e94c4eba1754b1e34e173, type: 3}
-  m_PrefabInstance: {fileID: 524687876}
-  m_PrefabAsset: {fileID: 0}
 --- !u!1 &530266879
 GameObject:
   m_ObjectHideFlags: 0
@@ -556,6 +551,14 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 1756561628515170204, guid: 30a465923c3480e4a860e357b6511ca9, type: 3}
+      propertyPath: m_Name
+      value: Player UI
+      objectReference: {fileID: 0}
+    - target: {fileID: 2524120182379323260, guid: 30a465923c3480e4a860e357b6511ca9, type: 3}
+      propertyPath: lookSpeed
+      value: 10
+      objectReference: {fileID: 0}
     - target: {fileID: 2524120182379323260, guid: 30a465923c3480e4a860e357b6511ca9, type: 3}
       propertyPath: m_Enabled
       value: 1
@@ -1080,7 +1083,5 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   playerCamera: {fileID: 1305341988}
-  menuCamera: {fileID: 524687882}
-  currentCamera: {fileID: 0}
   playerCanvas: {fileID: 1423091712}
   npcControl: {fileID: 524687880}

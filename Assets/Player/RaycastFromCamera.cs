@@ -2,7 +2,7 @@ using UnityEngine;
 
 public class RaycastFromCamera : MonoBehaviour
 {
-    public Camera playerCamera, menuCamera, currentCamera;
+    public Camera playerCamera;
 
     [SerializeField]
     Canvas playerCanvas;
@@ -10,19 +10,20 @@ public class RaycastFromCamera : MonoBehaviour
     [SerializeField]
     NPCControl npcControl;
 
+    int state;
+
     private void Start()
     {
-        currentCamera = playerCamera;
-        menuCamera.gameObject.SetActive(false);
+        state = 0;
     }
 
     void Update()
     {        
         // checking if player has clicked on stuff
-        if (Input.GetMouseButtonDown(0) && currentCamera == playerCamera)
+        if (Input.GetMouseButtonDown(0) && state == 0)
         {
             RaycastHit hit;
-            Physics.Raycast(currentCamera.transform.position, currentCamera.transform.forward,
+            Physics.Raycast(playerCamera.transform.position, playerCamera.transform.forward,
                 out hit);
             Transform objectHit = hit.collider.transform;
             Debug.Log(objectHit.name);
@@ -30,7 +31,10 @@ public class RaycastFromCamera : MonoBehaviour
             {
                 case "NPC":
                     npcControl.OpenMenu();
-                    currentCamera = menuCamera;
+                    Time.timeScale = 0f;
+                    state = 1;
+                    playerCanvas.gameObject.SetActive(false);
+                    Cursor.lockState = CursorLockMode.None;
                     break;
             }
         }
