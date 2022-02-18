@@ -5,9 +5,6 @@ public class RaycastFromCamera : MonoBehaviour
     public Camera playerCamera;
 
     [SerializeField]
-    Canvas playerCanvas;
-
-    [SerializeField]
     NPCControl npcControl;
 
     int state;
@@ -31,12 +28,14 @@ public class RaycastFromCamera : MonoBehaviour
             {
                 case "NPC":
                     npcControl.OpenMenu();
-                    Time.timeScale = 0f;
                     state = 1;
-                    playerCanvas.gameObject.SetActive(false);
-                    Cursor.lockState = CursorLockMode.None;
                     break;
             }
+        }
+
+        if (npcControl.menuOpen == false)
+        {
+            state = 0;
         }
     }
 }

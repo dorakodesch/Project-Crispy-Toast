@@ -23,9 +23,15 @@ public class NPCControl : MonoBehaviour
     [SerializeField]
     Canvas menuCanvas;
 
+    [SerializeField]
+    Canvas playerCanvas;
+
+    public bool menuOpen;
+
     private void Start()
     {
         menuCanvas.gameObject.SetActive(false);
+        menuOpen = false;
     }
 
     private void Update()
@@ -62,13 +68,13 @@ public class NPCControl : MonoBehaviour
     {
         int currentLevel = playerInventory.toolLevels[(int)toUpgrade];
         // check for enough resources
-        //if (checkResources(levelCosts[currentLevel], playerInventory))
-        //{
+        if (checkResources(levelCosts[currentLevel], playerInventory))
+        {
             // switch for different possible tools to upgrade
             playerInventory.levelUpTool(toUpgrade);
             // remove resources from player
             removeResources(levelCosts[currentLevel], playerInventory);
-        //}
+        }
     }
 
     // check if resources are adequate
@@ -95,11 +101,19 @@ public class NPCControl : MonoBehaviour
     public void OpenMenu()
     {
         menuCanvas.gameObject.SetActive(true);
+        Time.timeScale = 0f;
+        playerCanvas.gameObject.SetActive(false);
+        Cursor.lockState = CursorLockMode.None;
+        menuOpen = true;
     }
 
     public void CloseMenu()
     {
         menuCanvas.gameObject.SetActive(false);
+        Time.timeScale = 1f;
+        playerCanvas.gameObject.SetActive(true);
+        Cursor.lockState = CursorLockMode.Locked;
+        menuOpen = false;
     }
 }
 
