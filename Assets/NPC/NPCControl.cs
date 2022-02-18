@@ -23,17 +23,14 @@ public class NPCControl : MonoBehaviour
     [SerializeField]
     Canvas menuCanvas;
 
-    bool menuOpen;
-
     private void Start()
     {
         menuCanvas.gameObject.SetActive(false);
-        menuOpen = false;
     }
 
     private void Update()
     {
-        if (menuOpen)
+        if (menuCanvas.gameObject.activeSelf)
         {
             UpdateMenu();
         }
@@ -63,7 +60,6 @@ public class NPCControl : MonoBehaviour
     // upgrade tool based on current level
     public void upgrade()
     {
-        Debug.Log("upgrade button pressed");
         int currentLevel = playerInventory.toolLevels[(int)toUpgrade];
         // check for enough resources
         if (checkResources(levelCosts[currentLevel], playerInventory))
@@ -99,13 +95,11 @@ public class NPCControl : MonoBehaviour
     public void OpenMenu()
     {
         menuCanvas.gameObject.SetActive(true);
-        menuOpen = true;
     }
 
     public void CloseMenu()
     {
         menuCanvas.gameObject.SetActive(false);
-        menuOpen = false;
     }
 }
 
