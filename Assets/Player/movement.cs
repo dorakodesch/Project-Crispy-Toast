@@ -4,13 +4,13 @@ using UnityEngine.InputSystem;
 
 public class movement : MonoBehaviour
 {
+    // movement state
+    public enum MovementType { GROUND, AIR, GRAPPLE }
+    public MovementType currentMoveType = MovementType.GROUND;
+
     // button pressed variables
     private bool jumpNext = false;
     private bool sprintNext = false;
-
-    // exposed script variables
-    [HideInInspector]
-    public bool movementOverride = false;
 
     // refrence environment variables
     private CharacterController playerController;
@@ -28,10 +28,12 @@ public class movement : MonoBehaviour
     private float lookUpperLimit = 85f;
     [SerializeField, Range(-90f, -5f)]
     private float lookLowerLimit = -85f;
-    [SerializeField, Range(0f, 1f)]
+    [SerializeField, Range(0f, 100f)]
     private float jumpInitialVelocity = 1f;
-    [SerializeField, Range(1, 3)]
-    public float sprintMutliplier = 1f;
+    [SerializeField, Range(1f, 3f)]
+    private float sprintMutliplier = 1f;
+    [SerializeField, Range(0f, 1f)]
+    private float airMoveMultiplier = 0.5f;
 
     // script private condensed vars
     private Vector3 movementSpeed;
@@ -71,7 +73,7 @@ public class movement : MonoBehaviour
         movementSpeed = new Vector3(movementSpeedForward, 0, movementSpeedSideways);
     }
 
-    // Update is called once per frame
+    // Update is called once per frame and is used only for look functions
     private void Update()
     {
         // get mouse and keyboard input
@@ -98,39 +100,64 @@ public class movement : MonoBehaviour
         playerCamera.Rotate(new Vector3(verticalAngle - directionTempVert, 0, 0));
     }
 
-    // Fixed Update is called once per physics cycle
+    // Fixed Update is called once per physics cycle and is used for movement
     private void FixedUpdate()
     {
         // create current physics cycle movement variable
         Vector3 currentMovement = new Vector3(0, 0, 0);
 
-        // calculate gravity movement
-        if(!playerController.isGrounded)
-            gravityEffect += Physics.gravity.y * Time.fixedDeltaTime;
-        else
+        // switch based on movement type
+        switch (currentMoveType)
         {
-            gravityEffect = Physics.gravity.y * Time.fixedDeltaTime;
-            currentVerticalMovement = 0;
+            case MovementType.GROUND:
+                // jump only if on ground
+                if(jumpNext)
+                {
+                    currentVerticalMovement = jumpInitialVelocity;
+                    jumpNext = false;
+                    currentMovement += new Vector3(0, currentVerticalMovement, 0);
+                    currentMoveType = MovementType.AIR;
+                    break;
+                }
+
+                // force player into ground when grounded
+                currentVerticalMovement = -1f;
+                currentMovement += new Vector3(0, currentVerticalMovement, 0);
+
+                // apply keyboard input movement to player when grounded
+                playerMovement = transform.TransformDirection(playerMovement);
+                currentMovement += Vector3.Scale(playerMovement, movementSpeed) * Time.fixedDeltaTime;
+
+                // switch to air
+                if (!playerController.isGrounded)
+                    currentMoveType = MovementType.AIR;
+                break;
+            case MovementType.AIR:
+                // kill jump when already in air
+                jumpNext = false;
+
+                // apply gravity in air
+                gravityEffect = Physics.gravity.y * Time.fixedDeltaTime;
+                currentVerticalMovement += gravityEffect;
+                currentMovement += new Vector3(0, currentVerticalMovement, 0);
+
+                // apply air movement from keyboard input
+                playerMovement = transform.TransformDirection(playerMovement);
+                currentMovement += Vector3.Scale(playerMovement, movementSpeed) * airMoveMultiplier * Time.fixedDeltaTime;
+
+                // switch to ground
+                if (playerController.isGrounded)
+                    currentMoveType = MovementType.GROUND;
+                break;
+            case MovementType.GRAPPLE:
+                // kill jump when grappling
+                jumpNext = false;
+                break;
         }
-        currentVerticalMovement += gravityEffect * Time.fixedDeltaTime;
 
-        // jump
-        if(jumpNext)
-        {
-            currentVerticalMovement += jumpInitialVelocity;
-            jumpNext = false;
-        }
-
-        // add in the vertical component of movement
-        currentMovement += new Vector3(0, currentVerticalMovement, 0);
-
-        // add wasd forward backward left right movement controls to player
-        playerMovement = transform.TransformDirection(playerMovement);
-        currentMovement += Vector3.Scale(playerMovement, movementSpeed) * Time.fixedDeltaTime;
-
+        Debug.Log(currentMovement * Time.fixedDeltaTime);
         // move the player based the the movement for the current physics update
-        if(!movementOverride)
-            playerController.Move(currentMovement);
+        playerController.Move(currentMovement);
 
         // rotate player horizontally to look at mouse
         transform.Rotate(new Vector3(0, Vector2.Scale(look, new Vector2(lookSpeed, lookSpeed)).x, 0));
@@ -165,10 +192,10 @@ public class movement : MonoBehaviour
     // jump function
     public void Jump(InputAction.CallbackContext context)
     {
-        if (playerController.isGrounded)
-            jumpNext = true;
+        jumpNext = true;
     }
 
+    // sprint function
     public void Sprint(InputAction.CallbackContext context)
     {
         if(context.started || context.canceled)
