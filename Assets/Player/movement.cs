@@ -16,6 +16,7 @@ public class movement : MonoBehaviour
     private CharacterController playerController;
     private Transform playerCamera;
     public InputMasterActions inputMaster;
+    public Texture2D crosshair;
 
     // script inspector attribute variables
     [SerializeField, Range(0f, 100f)]
@@ -68,8 +69,9 @@ public class movement : MonoBehaviour
         gravityEffect = 0;
         currentVerticalMovement = 0;
 
-        // lock cursor to center of screen
+        // lock cursor to center of screen and texture
         Cursor.lockState = CursorLockMode.Locked;
+        Cursor.SetCursor(crosshair, crosshair.texelSize / 2, CursorMode.ForceSoftware);
 
         // condense vars
         movementSpeed = new Vector3(movementSpeedForward, 0, movementSpeedSideways);
