@@ -48,6 +48,8 @@ public class movement : MonoBehaviour
     private Vector3 inputMovement = new Vector3(0, 0, 0);
     private Vector2 inputLook = new Vector2(0, 0);
 
+    float temp = 0;
+
     // Awake is called before start
     private void Awake()
     {
@@ -117,6 +119,7 @@ public class movement : MonoBehaviour
                     jumpNext = false;
                     currentMovement += new Vector3(0, currentVerticalMovement, 0);
                     currentMoveType = MovementType.AIR;
+                    temp = Time.time;
                     break;
                 }
 
@@ -130,7 +133,10 @@ public class movement : MonoBehaviour
 
                 // switch to air
                 if (!playerController.isGrounded)
+                {
                     currentMoveType = MovementType.AIR;
+                    temp = Time.time;
+                }
                 break;
             case MovementType.AIR:
                 // kill jump when already in air
@@ -147,7 +153,11 @@ public class movement : MonoBehaviour
 
                 // switch to ground
                 if (playerController.isGrounded)
+                {
                     currentMoveType = MovementType.GROUND;
+                    Debug.Log(Time.time - temp);
+                }
+                    
                 break;
             case MovementType.GRAPPLE:
                 // kill jump when grappling
