@@ -10,11 +10,10 @@ TagManager:
   - TransparentFX
   - Ignore Raycast
   - Ground
-  - Grapple
   - Water
   - UI
-  - 
-  - 
+  - UI
+  - Grapple Target
   - 
   - 
   - 

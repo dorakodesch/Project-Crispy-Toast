@@ -5,8 +5,14 @@ using UnityEngine.InputSystem;
 public class movement : MonoBehaviour
 {
     // movement state
+    [HideInInspector]
     public enum MovementType { GROUND, AIR, GRAPPLE }
+    [HideInInspector]
     public MovementType currentMoveType = MovementType.GROUND;
+
+    // public refrence vars
+    [SerializeField]
+    private Texture2D crosshair;
 
     // button pressed variables
     private bool jumpNext = false;
@@ -15,8 +21,10 @@ public class movement : MonoBehaviour
     // refrence environment variables
     private CharacterController playerController;
     private Transform playerCamera;
+    [HideInInspector]
     public InputMasterActions inputMaster;
-    public Texture2D crosshair;
+    [HideInInspector]
+    public Vector3 grappleTarget;
 
     // script inspector attribute variables
     [SerializeField, Range(0f, 100f)]
@@ -35,11 +43,13 @@ public class movement : MonoBehaviour
     private float sprintMutliplier = 1f;
     [SerializeField, Range(0f, 1f)]
     private float airMoveMultiplier = 0.5f;
+    [SerializeField, Range(0f, 100f)]
+    private float grappleMoveMultiplier = 10f;
 
     // script private condensed vars
     private Vector3 movementSpeed;
 
-    // global vars to be refrenced in multiple functions
+    // local vars to be refrenced in multiple functions
     private Vector3 playerMovement;
     private Vector2 look;
     private float gravityEffect;
@@ -71,7 +81,7 @@ public class movement : MonoBehaviour
 
         // lock cursor to center of screen and texture
         Cursor.lockState = CursorLockMode.Locked;
-        Cursor.SetCursor(crosshair, crosshair.texelSize / 2, CursorMode.ForceSoftware);
+        Cursor.SetCursor(crosshair, new Vector2(crosshair.width / 2, crosshair.height / 2), CursorMode.ForceSoftware);
 
         // condense vars
         movementSpeed = new Vector3(movementSpeedForward, 0, movementSpeedSideways);
@@ -157,17 +167,24 @@ public class movement : MonoBehaviour
                 if (playerController.isGrounded)
                 {
                     currentMoveType = MovementType.GROUND;
-                    Debug.Log(Time.time - temp);
                 }
                     
                 break;
             case MovementType.GRAPPLE:
                 // kill jump when grappling
                 jumpNext = false;
+                Debug.Log(grappleTarget);
+                if(Mathf.Abs(Vector3.Distance(grappleTarget, this.transform.position)) > 2)
+                {
+                    currentMovement = (grappleTarget - this.transform.position) / 10 * Time.deltaTime * grappleMoveMultiplier;
+                }
+                else
+                {
+                    currentMoveType = MovementType.AIR;
+                }
                 break;
         }
 
-        Debug.Log(currentMovement * Time.fixedDeltaTime);
         // move the player based the the movement for the current physics update
         playerController.Move(currentMovement);
 
