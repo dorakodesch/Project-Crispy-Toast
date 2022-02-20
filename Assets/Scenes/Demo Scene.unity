@@ -135,7 +135,7 @@ GameObject:
   - component: {fileID: 51354016}
   - component: {fileID: 51354015}
   - component: {fileID: 51354014}
-  m_Layer: 0
+  m_Layer: 7
   m_Name: Grapple Target
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -645,7 +645,7 @@ GameObject:
   - component: {fileID: 1346720033}
   - component: {fileID: 1346720032}
   - component: {fileID: 1346720031}
-  m_Layer: 0
+  m_Layer: 7
   m_Name: Grapple Target (1)
   m_TagString: Untagged
   m_Icon: {fileID: 0}

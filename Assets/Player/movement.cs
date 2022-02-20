@@ -45,6 +45,12 @@ public class movement : MonoBehaviour
     private float airMoveMultiplier = 0.5f;
     [SerializeField, Range(0f, 100f)]
     private float grappleMoveMultiplier = 10f;
+    [SerializeField, Range(0f, 1f)]
+    private float grappleLineWeight = 0.25f;
+    [SerializeField, Range(0f, 100f)]
+    private float playerWeight = 56f;
+    [SerializeField, Range(0f, 100f)]
+    private float grappleTension = 1f;
 
     // script private condensed vars
     private Vector3 movementSpeed;
@@ -176,7 +182,9 @@ public class movement : MonoBehaviour
                 Debug.Log(grappleTarget);
                 if(Mathf.Abs(Vector3.Distance(grappleTarget, this.transform.position)) > 2)
                 {
-                    currentMovement = (grappleTarget - this.transform.position) / 10 * Time.deltaTime * grappleMoveMultiplier;
+                    Vector3 normalGrapplePull = (grappleTarget - this.transform.position).normalized;
+                    currentMovement = Vector3.zero;
+                    currentMovement += normalGrapplePull * Time.deltaTime * grappleMoveMultiplier;
                 }
                 else
                 {
