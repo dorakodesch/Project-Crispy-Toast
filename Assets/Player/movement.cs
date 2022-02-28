@@ -104,7 +104,7 @@ public class movement : MonoBehaviour
 
         // query current direction, normalize, and add movement
         float verticalAngle = normalizeAngle(playerCamera.rotation.eulerAngles.x);
-        verticalAngle += look.y * lookSpeed * Time.deltaTime;
+        verticalAngle += look.y * lookSpeed;
 
         // clamp to possible range and denormalize
         verticalAngle = Mathf.Clamp(verticalAngle, lookLowerLimit, lookUpperLimit);
@@ -191,7 +191,7 @@ public class movement : MonoBehaviour
         playerController.Move(currentMovement);
 
         // rotate player horizontally to look at mouse
-        transform.Rotate(new Vector3(0, look.x * lookSpeed * Time.deltaTime, 0));
+        transform.Rotate(new Vector3(0, look.x * lookSpeed, 0));
     }
 
     // normalize angle to return between -180 and 180, centered on horizon with negative values facing down
@@ -217,7 +217,7 @@ public class movement : MonoBehaviour
     // look function
     public void Look(InputAction.CallbackContext context)
     {
-        inputLook = context.ReadValue<Vector2>();
+        inputLook = context.ReadValue<Vector2>() * Time.deltaTime;
     }
 
     // jump function
