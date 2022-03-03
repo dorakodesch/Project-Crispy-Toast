@@ -21,10 +21,10 @@ public class DestructableChunk : MonoBehaviour
                 jointsGone = false;
             }
         }
-        if (jointsGone && !gameObject.AddComponent<Rigidbody>())
+        if (jointsGone)
         {
             gameObject.transform.parent = null;
-            chunkRB = gameObject.AddComponent<Rigidbody>();
+            gameObject.AddComponent<Rigidbody>();
         }
     }
 }
