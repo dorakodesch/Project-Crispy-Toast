@@ -1,5 +1,6 @@
 using TMPro;
 using UnityEngine;
+using UnityEngine.InputSystem;
 
 public class TextPromptCreator : MonoBehaviour
 {
@@ -68,5 +69,13 @@ public class TextPromptCreator : MonoBehaviour
     {
         GameObject go = textObjects[i];
         go.SetActive(true);
+    }
+
+    public void CloseText(InputAction.CallbackContext context)
+    {
+        for (int i = 0; i < textObjects.Length; i++)
+        {
+            textObjects[i].SetActive(false);
+        }
     }
 }
