@@ -21,23 +21,26 @@ public class TextPromptCreator : MonoBehaviour
     Canvas canvas;
 
     [SerializeField]
+    GameObject textPrefab;
+
+    [SerializeField]
     TextBoxSettings[] textBoxSettings;
 
-    Collider[] colliders;
+    GameObject[] textObjects;
 
     // setup, might put text changes in update for easy testing
     private void Start()
     {
-        colliders = new Collider[textBoxSettings.Length];
+        textObjects = new GameObject[textBoxSettings.Length];
 
         for (int i = 0; i < textBoxSettings.Length; i++)
         {
             TextBoxSettings settings = textBoxSettings[i];
 
             // creating text object
-            var go = new GameObject("Text " + i);
+            var go = Instantiate(textPrefab);
             go.transform.SetParent(canvas.transform, false);
-            var text = go.AddComponent<TextMeshProUGUI>();
+            var text = go.GetComponent<TextMeshProUGUI>();
             // setting text box size, kind of a pain
             text.rectTransform.SetSizeWithCurrentAnchors(
                 RectTransform.Axis.Horizontal, settings.textBoxSize.x);
@@ -46,12 +49,24 @@ public class TextPromptCreator : MonoBehaviour
             text.rectTransform.anchoredPosition = settings.textBoxPosition;
             text.SetText(settings.displayText);
             text.fontSize = settings.fontSize;
+            textObjects[i] = go;
+            go.SetActive(false);
 
             // collider stuff
             go = new GameObject("Collider " + i);
             go.transform.position = settings.colliderPosition;
             go.transform.localScale = settings.colliderSize;
-            go.AddComponent<BoxCollider>();
+            go.AddComponent<BoxCollider>().isTrigger = true;
+            go.AddComponent<TextBoxCollider>();
+            TextBoxCollider textBoxCollider = go.GetComponent<TextBoxCollider>();
+            textBoxCollider.promptCreator = this;
+            textBoxCollider.index = i;
         }
+    }
+
+    public void CollisionDetected(int i)
+    {
+        GameObject go = textObjects[i];
+        go.SetActive(true);
     }
 }

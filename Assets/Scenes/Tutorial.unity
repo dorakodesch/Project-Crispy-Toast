@@ -874,13 +874,14 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   canvas: {fileID: 78131273}
+  textPrefab: {fileID: 9151923065547320184, guid: 4f75415efa4006e45abe638d3e629822, type: 3}
   textBoxSettings:
   - textBoxSize: {x: 100, y: 10}
     textBoxPosition: {x: 100, y: 100}
     displayText: test
     fontSize: 30
-    colliderPosition: {x: -300, y: 1, z: -220}
-    colliderSize: {x: 2, y: 1, z: 1}
+    colliderPosition: {x: -310, y: 1, z: -220}
+    colliderSize: {x: 2, y: 2, z: 2}
 --- !u!4 &1388194614
 Transform:
   m_ObjectHideFlags: 0

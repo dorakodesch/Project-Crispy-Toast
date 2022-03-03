@@ -119,7 +119,7 @@ GameObject:
   - component: {fileID: 5583838236496410950}
   m_Layer: 0
   m_Name: Player
-  m_TagString: Untagged
+  m_TagString: Player
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -218,7 +218,7 @@ MonoBehaviour:
   movementOverride: 0
   movementSpeedForward: 50
   movementSpeedSideways: 50
-  lookSpeed: 0.293
+  lookSpeed: 1
   lookUpperLimit: 85
   lookLowerLimit: -85
   jumpInitialVelocity: 0.133
@@ -411,9 +411,11 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   resourceCounters: 00000000000000000000000000000000000000000000000000000000
-  laserLevel: 0
-  grappleLevel: 0
-  battteryMakerLevel: 0
+  toolNames:
+  - Laser
+  - Grapple
+  - Battery Maker
+  toolLevels: 000000000000000000000000
 --- !u!1 &6406977530251372302
 GameObject:
   m_ObjectHideFlags: 0
