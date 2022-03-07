@@ -41,7 +41,6 @@ public class inventory : MonoBehaviour
 
     private void Update()
     {
-        Debug.Log(resourceCounters);
         for(int i = 0; i < resourceCounters.Length; i++)
         {
             resources j = (resources)i;
