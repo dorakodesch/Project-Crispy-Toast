@@ -81,7 +81,6 @@ public class movement : MonoBehaviour
 
         // lock cursor to center of screen and texture
         Cursor.lockState = CursorLockMode.Locked;
-        Cursor.SetCursor(crosshair, new Vector2(crosshair.width / 2, crosshair.height / 2), CursorMode.ForceSoftware);
 
         // condense vars
         movementSpeed = new Vector3(movementSpeedForward, 0, movementSpeedSideways);
