@@ -45,7 +45,6 @@ public class RobotNavigation : MonoBehaviour
 			{
 				if (collider.gameObject.GetComponent<Rigidbody>())
 				{
-					Destroy(collider.gameObject);
 					state = 0;
 				}
                 else
@@ -68,7 +67,6 @@ public class RobotNavigation : MonoBehaviour
                 {
 					destination = chunks[i].transform.position;
 					state = 1;
-					Debug.Log("test");
 					break;
                 }
             }
