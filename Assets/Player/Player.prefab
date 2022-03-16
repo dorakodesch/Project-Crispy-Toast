@@ -11,7 +11,7 @@ GameObject:
   - component: {fileID: 6110307543458756437}
   - component: {fileID: 4251561728241926031}
   - component: {fileID: 980195193056051628}
-  m_Layer: 8
+  m_Layer: 0
   m_Name: Crystals
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -145,7 +145,7 @@ GameObject:
   - component: {fileID: 7932467100471170668}
   - component: {fileID: 8604426969514370424}
   - component: {fileID: 6170508365440966020}
-  m_Layer: 8
+  m_Layer: 0
   m_Name: Glass
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -279,7 +279,7 @@ GameObject:
   - component: {fileID: 6306219943265959856}
   - component: {fileID: 7895422444291569462}
   - component: {fileID: 7591411268181314231}
-  m_Layer: 8
+  m_Layer: 0
   m_Name: Glass Total
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -413,7 +413,7 @@ GameObject:
   - component: {fileID: 3271422463158697083}
   - component: {fileID: 4173047437168696590}
   - component: {fileID: 6149678791913529331}
-  m_Layer: 8
+  m_Layer: 0
   m_Name: Scrap
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -547,7 +547,7 @@ GameObject:
   - component: {fileID: 4393880713632046048}
   - component: {fileID: 1009020224480791937}
   - component: {fileID: 4490730064380739138}
-  m_Layer: 8
+  m_Layer: 0
   m_Name: Batteries Total
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -681,7 +681,7 @@ GameObject:
   - component: {fileID: 556081357046619712}
   - component: {fileID: 4503951440618719733}
   - component: {fileID: 6662112436997164838}
-  m_Layer: 8
+  m_Layer: 0
   m_Name: Crosshair
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -756,7 +756,7 @@ GameObject:
   - component: {fileID: 2636711790249942678}
   - component: {fileID: 7713054536881811237}
   - component: {fileID: 4890112603309934403}
-  m_Layer: 8
+  m_Layer: 0
   m_Name: Lithium
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -890,7 +890,7 @@ GameObject:
   - component: {fileID: 1486306043026607623}
   - component: {fileID: 7729150415430059464}
   - component: {fileID: 624266363918979031}
-  m_Layer: 8
+  m_Layer: 0
   m_Name: Wire Total
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -1024,7 +1024,7 @@ GameObject:
   - component: {fileID: 3477136873873152694}
   - component: {fileID: 5144518703786683352}
   - component: {fileID: 3267715006531220683}
-  m_Layer: 8
+  m_Layer: 0
   m_Name: Lithium Total
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -1158,7 +1158,7 @@ GameObject:
   - component: {fileID: 6299867251791492467}
   - component: {fileID: 4135627484104948835}
   - component: {fileID: 3621993795488914812}
-  m_Layer: 8
+  m_Layer: 0
   m_Name: Rope
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -1292,7 +1292,7 @@ GameObject:
   - component: {fileID: 7276900991991437047}
   - component: {fileID: 4745145456654065699}
   - component: {fileID: 7414650932437197432}
-  m_Layer: 8
+  m_Layer: 0
   m_Name: Batteries
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -1432,7 +1432,7 @@ GameObject:
   - component: {fileID: 814735866816178900}
   - component: {fileID: 1523678162880771359}
   - component: {fileID: 5583838236496410950}
-  m_Layer: 8
+  m_Layer: 0
   m_Name: Player
   m_TagString: Player
   m_Icon: {fileID: 0}
@@ -1758,7 +1758,7 @@ GameObject:
   - component: {fileID: 3964464463334780774}
   - component: {fileID: 5031181177352020715}
   - component: {fileID: 5728259775969860348}
-  m_Layer: 8
+  m_Layer: 0
   m_Name: Resources
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -1845,7 +1845,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 1462805794730691877}
-  m_Layer: 8
+  m_Layer: 0
   m_Name: Holding Hand Parent
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -1877,7 +1877,7 @@ GameObject:
   - component: {fileID: 5497299505425712547}
   - component: {fileID: 2402501165241903665}
   - component: {fileID: 3514557331397367139}
-  m_Layer: 8
+  m_Layer: 0
   m_Name: Crystals Total
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -2012,7 +2012,7 @@ GameObject:
   - component: {fileID: 6088442006369606815}
   - component: {fileID: 6380919950586061822}
   - component: {fileID: 831094032419615807}
-  m_Layer: 8
+  m_Layer: 0
   m_Name: Player Camera
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -2209,7 +2209,7 @@ GameObject:
   - component: {fileID: 7653174679669246020}
   - component: {fileID: 8846093234716386556}
   - component: {fileID: 8069556764019525516}
-  m_Layer: 8
+  m_Layer: 0
   m_Name: Scrap Total
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -2343,7 +2343,7 @@ GameObject:
   - component: {fileID: 3665928887991845291}
   - component: {fileID: 1081501441813752032}
   - component: {fileID: 181365698478693190}
-  m_Layer: 8
+  m_Layer: 0
   m_Name: Wire
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -2478,7 +2478,7 @@ GameObject:
   - component: {fileID: 4020036246950857482}
   - component: {fileID: 2926298333091277479}
   - component: {fileID: 998102587818055849}
-  m_Layer: 8
+  m_Layer: 0
   m_Name: Player HUD
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -2578,7 +2578,7 @@ GameObject:
   - component: {fileID: 140220805811326447}
   - component: {fileID: 1016074542674506187}
   - component: {fileID: 6186892524381864217}
-  m_Layer: 8
+  m_Layer: 0
   m_Name: Rope Total
   m_TagString: Untagged
   m_Icon: {fileID: 0}
