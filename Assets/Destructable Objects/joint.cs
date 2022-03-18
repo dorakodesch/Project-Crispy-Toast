@@ -10,6 +10,5 @@ public class joint : MonoBehaviour
     {
         //Trigger particle system
         Instantiate(breakParticles, transform.position, Quaternion.identity);
-        Debug.Log("Particles maybe");
     }
 }

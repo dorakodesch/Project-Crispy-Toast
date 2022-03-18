@@ -13,7 +13,7 @@ GameObject:
   - component: {fileID: 2472155401168085638}
   - component: {fileID: 8969729413907094722}
   - component: {fileID: 4112217428414092050}
-  - component: {fileID: 8124571369464319522}
+  - component: {fileID: 9188407766517831405}
   m_Layer: 0
   m_Name: Joint
   m_TagString: Joint
@@ -110,7 +110,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   breakParticles: {fileID: 1941786187904644463, guid: 5907ff5006218be43b2794994748911f, type: 3}
---- !u!54 &8124571369464319522
+--- !u!54 &9188407766517831405
 Rigidbody:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
