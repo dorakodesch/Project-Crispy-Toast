@@ -1434,7 +1434,7 @@ GameObject:
   - component: {fileID: 5583838236496410950}
   m_Layer: 0
   m_Name: Player
-  m_TagString: Untagged
+  m_TagString: Player
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -1536,7 +1536,7 @@ MonoBehaviour:
   grappleTarget: {x: 0, y: 0, z: 0}
   movementSpeedForward: 50
   movementSpeedSideways: 50
-  lookSpeed: 0.293
+  lookSpeed: 1
   lookUpperLimit: 85
   lookLowerLimit: -85
   jumpInitialVelocity: 0.133
