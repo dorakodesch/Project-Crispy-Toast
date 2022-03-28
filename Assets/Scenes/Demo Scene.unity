@@ -1355,6 +1355,14 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 202140427142106203, guid: f676d51139afa08499443c2ceca4bacb, type: 3}
+      propertyPath: type
+      value: 4
+      objectReference: {fileID: 0}
+    - target: {fileID: 1874692379715609735, guid: f676d51139afa08499443c2ceca4bacb, type: 3}
+      propertyPath: type
+      value: 5
+      objectReference: {fileID: 0}
     - target: {fileID: 2561350850208360466, guid: f676d51139afa08499443c2ceca4bacb, type: 3}
       propertyPath: m_UseGravity
       value: 0
@@ -1533,15 +1541,15 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 2561350851708663508, guid: f676d51139afa08499443c2ceca4bacb, type: 3}
       propertyPath: m_LocalScale.x
-      value: 1.9
+      value: 2
       objectReference: {fileID: 0}
     - target: {fileID: 2561350851708663508, guid: f676d51139afa08499443c2ceca4bacb, type: 3}
       propertyPath: m_LocalScale.y
-      value: 1.9
+      value: 2
       objectReference: {fileID: 0}
     - target: {fileID: 2561350851708663508, guid: f676d51139afa08499443c2ceca4bacb, type: 3}
       propertyPath: m_LocalScale.z
-      value: 1.9
+      value: 2
       objectReference: {fileID: 0}
     - target: {fileID: 2561350851946731144, guid: f676d51139afa08499443c2ceca4bacb, type: 3}
       propertyPath: m_LocalScale.x
@@ -1562,6 +1570,26 @@ PrefabInstance:
     - target: {fileID: 2561350851946731150, guid: f676d51139afa08499443c2ceca4bacb, type: 3}
       propertyPath: m_IsKinematic
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6391791557227351510, guid: f676d51139afa08499443c2ceca4bacb, type: 3}
+      propertyPath: type
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 6579153720274025733, guid: f676d51139afa08499443c2ceca4bacb, type: 3}
+      propertyPath: type
+      value: 6
+      objectReference: {fileID: 0}
+    - target: {fileID: 8444308314552169683, guid: f676d51139afa08499443c2ceca4bacb, type: 3}
+      propertyPath: type
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 8526577397549114740, guid: f676d51139afa08499443c2ceca4bacb, type: 3}
+      propertyPath: type
+      value: 3
+      objectReference: {fileID: 0}
+    - target: {fileID: 8910138344526212006, guid: f676d51139afa08499443c2ceca4bacb, type: 3}
+      propertyPath: type
+      value: 4
       objectReference: {fileID: 0}
     m_RemovedComponents:
     - {fileID: 2561350850307706971, guid: f676d51139afa08499443c2ceca4bacb, type: 3}

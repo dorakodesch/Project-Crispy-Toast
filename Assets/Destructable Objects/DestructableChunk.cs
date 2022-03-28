@@ -8,6 +8,7 @@ public class DestructableChunk : MonoBehaviour
 
     public bool jointsGone = false;
     private List<JoinedObject> connected = new List<JoinedObject>(0);
+    public inventory.resources type = inventory.resources.Rope;
 
     // Start is called before first frame
     private void Start()
