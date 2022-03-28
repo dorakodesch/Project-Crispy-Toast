@@ -5,4 +5,9 @@ public class RobotDestination : MonoBehaviour
 {
 	[SerializeField]
 	Transform player;
+
+	private void Update()
+	{
+		transform.position = player.position;
+	}
 }
