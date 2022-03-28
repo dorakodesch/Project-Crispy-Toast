@@ -9,14 +9,10 @@ public class RobotNavigation : MonoBehaviour
 	Transform player;
 
 	[SerializeField, Min(1f)]
-	float distanceFromPlayer = 1.5f;
+	float distanceFromPlayer = 10f;
 
 	[SerializeField, Min(0f)]
 	float resourceBreakdownRadius = 5f; // minimum distance for resource checks
-
-	Collider[] colliders; // colliders grabbed by physics.overlapsphere
-
-	int state;
 
 	Vector3 destination;
 
@@ -27,50 +23,32 @@ public class RobotNavigation : MonoBehaviour
 	private void Start()
 	{
 		agent = GetComponent<NavMeshAgent>();
-		state = 0;
 		destination = transform.position;
 	}
 
 	private void Update()
 	{
 		// segment check
-		// physics.overlapsphere grabs all colliders within the sphere defined by (center, radius)
-		colliders = Physics.OverlapSphere(transform.position, resourceBreakdownRadius);
-
-		// checking for object chunks
-		for (int i = 0; i < colliders.Length; i++)
+        // set destination to player
+        if(Vector3.Distance(player.position, this.transform.position) >= distanceFromPlayer)
 		{
-			Collider collider = colliders[i];
-			if (collider.gameObject.GetComponent<DestructableChunk>())
-			{
-				if (collider.gameObject.GetComponent<Rigidbody>())
-				{
-					state = 0;
-				}
-                else
-                {
-					state = 0;
-                }
-			}
+			destination = player.position + Vector3.Normalize(player.position - this.transform.position) * distanceFromPlayer;
 		}
-
-		if (state == 0)
+        else
         {
-			destination = player.position + Vector3.right * distanceFromPlayer;
+			destination = this.transform.position;
+        }
 
-			// segment check for destination
-			chunks = FindObjectsOfType<DestructableChunk>();
-
-			for (int i = 0; i < chunks.Length; i++)
+		// segment check for destination and set destination to chunk
+		chunks = FindObjectsOfType<DestructableChunk>();
+		foreach (DestructableChunk i in chunks)
+        {
+			if (i.jointsGone)
             {
-				if (chunks[i].gameObject.GetComponent<Rigidbody>())
-                {
-					destination = chunks[i].transform.position;
-					state = 1;
-					break;
-                }
+				destination = i.transform.position;
+				break;
             }
-		}
+        }
 
 		agent.SetDestination(destination);
 	}
