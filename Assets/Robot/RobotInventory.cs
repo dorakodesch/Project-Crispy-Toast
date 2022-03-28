@@ -23,7 +23,7 @@ public class RobotInventory : MonoBehaviour
                 if(i.gameObject.GetComponent<DestructableChunk>().jointsGone)
                 {
                     Destroy(i.gameObject);
-                    inStorage[0]++;
+                    inStorage[((int)i.GetComponent<DestructableChunk>().type)]++;
                 }
             }
 
