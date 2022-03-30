@@ -11,10 +11,14 @@ public class RobotDestination : MonoBehaviour
 
 	DestructableChunk[] chunks;
 
+	DestructableChunk chunk;
+
 	private void Start()
 	{
 		// following player at the beginning
 		state = 0;
+		chunk = null;
+		chunks = null;
 	}
 
 	private void Update()
@@ -29,10 +33,11 @@ public class RobotDestination : MonoBehaviour
 		// following chunk
 		else
 		{
-
+			transform.position = chunk.transform.position;
 		}
 	}
 
+	// in hindsight maybe it was a bad idea to offload the check here
 	private void UpdateState()
 	{
 		state = 0;
@@ -43,6 +48,7 @@ public class RobotDestination : MonoBehaviour
 			if (i.jointsGone)
 			{
 				state = 1;
+				chunk = i;
 				break;
 			}
 		}
