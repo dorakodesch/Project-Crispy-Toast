@@ -6,6 +6,7 @@ TagManager:
   tags:
   - Joint
   - NPC
+  - Chunk
   layers:
   - Default
   - TransparentFX

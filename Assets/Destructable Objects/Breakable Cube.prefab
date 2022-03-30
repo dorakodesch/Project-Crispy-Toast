@@ -105,8 +105,8 @@ PrefabInstance:
       value: Destructible Chunk (4)
       objectReference: {fileID: 0}
     - target: {fileID: 7602327179773805372, guid: d0185f1ef90025141ae3e532a603c1ef, type: 3}
-      propertyPath: m_Layer
-      value: 8
+      propertyPath: m_TagString
+      value: Chunk
       objectReference: {fileID: 0}
     - target: {fileID: 7602327179773805373, guid: d0185f1ef90025141ae3e532a603c1ef, type: 3}
       propertyPath: m_RootOrder
@@ -182,10 +182,6 @@ PrefabInstance:
       propertyPath: m_Name
       value: Destructible Chunk (2)
       objectReference: {fileID: 0}
-    - target: {fileID: 7602327179773805372, guid: d0185f1ef90025141ae3e532a603c1ef, type: 3}
-      propertyPath: m_Layer
-      value: 8
-      objectReference: {fileID: 0}
     - target: {fileID: 7602327179773805373, guid: d0185f1ef90025141ae3e532a603c1ef, type: 3}
       propertyPath: m_RootOrder
       value: 3
@@ -259,10 +255,6 @@ PrefabInstance:
     - target: {fileID: 7602327179773805372, guid: d0185f1ef90025141ae3e532a603c1ef, type: 3}
       propertyPath: m_Name
       value: Destructible Chunk (3)
-      objectReference: {fileID: 0}
-    - target: {fileID: 7602327179773805372, guid: d0185f1ef90025141ae3e532a603c1ef, type: 3}
-      propertyPath: m_Layer
-      value: 8
       objectReference: {fileID: 0}
     - target: {fileID: 7602327179773805373, guid: d0185f1ef90025141ae3e532a603c1ef, type: 3}
       propertyPath: m_RootOrder
@@ -1526,10 +1518,6 @@ PrefabInstance:
       propertyPath: m_Name
       value: Destructible Chunk (1)
       objectReference: {fileID: 0}
-    - target: {fileID: 7602327179773805372, guid: d0185f1ef90025141ae3e532a603c1ef, type: 3}
-      propertyPath: m_Layer
-      value: 8
-      objectReference: {fileID: 0}
     - target: {fileID: 7602327179773805373, guid: d0185f1ef90025141ae3e532a603c1ef, type: 3}
       propertyPath: m_RootOrder
       value: 2
@@ -1603,10 +1591,6 @@ PrefabInstance:
     - target: {fileID: 7602327179773805372, guid: d0185f1ef90025141ae3e532a603c1ef, type: 3}
       propertyPath: m_Name
       value: Destructible Chunk (7)
-      objectReference: {fileID: 0}
-    - target: {fileID: 7602327179773805372, guid: d0185f1ef90025141ae3e532a603c1ef, type: 3}
-      propertyPath: m_Layer
-      value: 8
       objectReference: {fileID: 0}
     - target: {fileID: 7602327179773805373, guid: d0185f1ef90025141ae3e532a603c1ef, type: 3}
       propertyPath: m_RootOrder
@@ -1682,10 +1666,6 @@ PrefabInstance:
       propertyPath: m_Name
       value: Destructible Chunk
       objectReference: {fileID: 0}
-    - target: {fileID: 7602327179773805372, guid: d0185f1ef90025141ae3e532a603c1ef, type: 3}
-      propertyPath: m_Layer
-      value: 8
-      objectReference: {fileID: 0}
     - target: {fileID: 7602327179773805373, guid: d0185f1ef90025141ae3e532a603c1ef, type: 3}
       propertyPath: m_RootOrder
       value: 1
@@ -1760,10 +1740,6 @@ PrefabInstance:
       propertyPath: m_Name
       value: Destructible Chunk (5)
       objectReference: {fileID: 0}
-    - target: {fileID: 7602327179773805372, guid: d0185f1ef90025141ae3e532a603c1ef, type: 3}
-      propertyPath: m_Layer
-      value: 8
-      objectReference: {fileID: 0}
     - target: {fileID: 7602327179773805373, guid: d0185f1ef90025141ae3e532a603c1ef, type: 3}
       propertyPath: m_RootOrder
       value: 6
@@ -1837,10 +1813,6 @@ PrefabInstance:
     - target: {fileID: 7602327179773805372, guid: d0185f1ef90025141ae3e532a603c1ef, type: 3}
       propertyPath: m_Name
       value: Destructible Chunk (6)
-      objectReference: {fileID: 0}
-    - target: {fileID: 7602327179773805372, guid: d0185f1ef90025141ae3e532a603c1ef, type: 3}
-      propertyPath: m_Layer
-      value: 8
       objectReference: {fileID: 0}
     - target: {fileID: 7602327179773805373, guid: d0185f1ef90025141ae3e532a603c1ef, type: 3}
       propertyPath: m_RootOrder

@@ -5,7 +5,7 @@ public class toolFunctions : MonoBehaviour
 {
     // Create variables for object in hand
     [SerializeField]
-    private enum inHand { START, hammer = START, grapple, END = grapple };
+    private enum inHand { START, hammer = START, laser, grapple, END = grapple };
     private inHand current;
     [SerializeField]
     private GameObject[] tools;
