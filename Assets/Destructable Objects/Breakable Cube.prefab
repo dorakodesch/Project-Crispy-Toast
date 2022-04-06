@@ -100,6 +100,10 @@ PrefabInstance:
       propertyPath: importantJoints.Array.data[2]
       value: 
       objectReference: {fileID: 37299474029910333}
+    - target: {fileID: 7602327179773805347, guid: d0185f1ef90025141ae3e532a603c1ef, type: 3}
+      propertyPath: m_Materials.Array.data[0]
+      value: 
+      objectReference: {fileID: 2100000, guid: de8add265a31fdb47bcbfb14b250d739, type: 2}
     - target: {fileID: 7602327179773805372, guid: d0185f1ef90025141ae3e532a603c1ef, type: 3}
       propertyPath: m_Name
       value: Destructible Chunk (4)
@@ -178,6 +182,10 @@ PrefabInstance:
       propertyPath: importantJoints.Array.data[2]
       value: 
       objectReference: {fileID: 37299475742553516}
+    - target: {fileID: 7602327179773805347, guid: d0185f1ef90025141ae3e532a603c1ef, type: 3}
+      propertyPath: m_Materials.Array.data[0]
+      value: 
+      objectReference: {fileID: 2100000, guid: de8add265a31fdb47bcbfb14b250d739, type: 2}
     - target: {fileID: 7602327179773805372, guid: d0185f1ef90025141ae3e532a603c1ef, type: 3}
       propertyPath: m_Name
       value: Destructible Chunk (2)
@@ -252,6 +260,10 @@ PrefabInstance:
       propertyPath: importantJoints.Array.data[2]
       value: 
       objectReference: {fileID: 37299475742553516}
+    - target: {fileID: 7602327179773805347, guid: d0185f1ef90025141ae3e532a603c1ef, type: 3}
+      propertyPath: m_Materials.Array.data[0]
+      value: 
+      objectReference: {fileID: 2100000, guid: de8add265a31fdb47bcbfb14b250d739, type: 2}
     - target: {fileID: 7602327179773805372, guid: d0185f1ef90025141ae3e532a603c1ef, type: 3}
       propertyPath: m_Name
       value: Destructible Chunk (3)
@@ -1514,6 +1526,10 @@ PrefabInstance:
       propertyPath: importantJoints.Array.data[2]
       value: 
       objectReference: {fileID: 37299475084091534}
+    - target: {fileID: 7602327179773805347, guid: d0185f1ef90025141ae3e532a603c1ef, type: 3}
+      propertyPath: m_Materials.Array.data[0]
+      value: 
+      objectReference: {fileID: 2100000, guid: de8add265a31fdb47bcbfb14b250d739, type: 2}
     - target: {fileID: 7602327179773805372, guid: d0185f1ef90025141ae3e532a603c1ef, type: 3}
       propertyPath: m_Name
       value: Destructible Chunk (1)
@@ -1588,6 +1604,10 @@ PrefabInstance:
       propertyPath: importantJoints.Array.data[2]
       value: 
       objectReference: {fileID: 37299475585110128}
+    - target: {fileID: 7602327179773805347, guid: d0185f1ef90025141ae3e532a603c1ef, type: 3}
+      propertyPath: m_Materials.Array.data[0]
+      value: 
+      objectReference: {fileID: 2100000, guid: de8add265a31fdb47bcbfb14b250d739, type: 2}
     - target: {fileID: 7602327179773805372, guid: d0185f1ef90025141ae3e532a603c1ef, type: 3}
       propertyPath: m_Name
       value: Destructible Chunk (7)
@@ -1662,6 +1682,10 @@ PrefabInstance:
       propertyPath: importantJoints.Array.data[2]
       value: 
       objectReference: {fileID: 37299475540353093}
+    - target: {fileID: 7602327179773805347, guid: d0185f1ef90025141ae3e532a603c1ef, type: 3}
+      propertyPath: m_Materials.Array.data[0]
+      value: 
+      objectReference: {fileID: 2100000, guid: de8add265a31fdb47bcbfb14b250d739, type: 2}
     - target: {fileID: 7602327179773805372, guid: d0185f1ef90025141ae3e532a603c1ef, type: 3}
       propertyPath: m_Name
       value: Destructible Chunk
@@ -1736,6 +1760,10 @@ PrefabInstance:
       propertyPath: importantJoints.Array.data[2]
       value: 
       objectReference: {fileID: 37299474464773694}
+    - target: {fileID: 7602327179773805347, guid: d0185f1ef90025141ae3e532a603c1ef, type: 3}
+      propertyPath: m_Materials.Array.data[0]
+      value: 
+      objectReference: {fileID: 2100000, guid: de8add265a31fdb47bcbfb14b250d739, type: 2}
     - target: {fileID: 7602327179773805372, guid: d0185f1ef90025141ae3e532a603c1ef, type: 3}
       propertyPath: m_Name
       value: Destructible Chunk (5)
@@ -1810,6 +1838,10 @@ PrefabInstance:
       propertyPath: importantJoints.Array.data[2]
       value: 
       objectReference: {fileID: 37299475197883842}
+    - target: {fileID: 7602327179773805347, guid: d0185f1ef90025141ae3e532a603c1ef, type: 3}
+      propertyPath: m_Materials.Array.data[0]
+      value: 
+      objectReference: {fileID: 2100000, guid: de8add265a31fdb47bcbfb14b250d739, type: 2}
     - target: {fileID: 7602327179773805372, guid: d0185f1ef90025141ae3e532a603c1ef, type: 3}
       propertyPath: m_Name
       value: Destructible Chunk (6)
