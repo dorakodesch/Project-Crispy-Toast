@@ -1432,7 +1432,7 @@ GameObject:
   - component: {fileID: 814735866816178900}
   - component: {fileID: 1523678162880771359}
   - component: {fileID: 5583838236496410950}
-  - component: {fileID: 4719016402410564641}
+  - component: {fileID: 3675108349922926188}
   m_Layer: 8
   m_Name: Player
   m_TagString: Player
@@ -1749,6 +1749,22 @@ MonoBehaviour:
   batteries: {fileID: 7414650932437197432}
   crystals: {fileID: 980195193056051628}
   lithium: {fileID: 4890112603309934403}
+--- !u!114 &3675108349922926188
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5427840541746909175}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 183748dd497aa473a98ff0cd8cb67fc5, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  version: 1
+  uniqueID: 3538627412335695563
+  updateError: 1
+  checkTime: 0.2
 --- !u!1 &5569148120429449330
 GameObject:
   m_ObjectHideFlags: 0
