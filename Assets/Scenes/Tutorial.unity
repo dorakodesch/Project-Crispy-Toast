@@ -38,7 +38,7 @@ RenderSettings:
   m_ReflectionIntensity: 1
   m_CustomReflection: {fileID: 0}
   m_Sun: {fileID: 0}
-  m_IndirectSpecularColor: {r: 0, g: 0, b: 0, a: 1}
+  m_IndirectSpecularColor: {r: 3951.1147, g: 3324.15, b: 4226.2515, a: 1}
   m_UseRadianceAmbientProbe: 0
 --- !u!157 &3
 LightmapSettings:
@@ -364,7 +364,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 3699637816089781355, guid: 30a465923c3480e4a860e357b6511ca9, type: 3}
       propertyPath: m_LocalRotation.w
-      value: 0.7071068
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 3699637816089781355, guid: 30a465923c3480e4a860e357b6511ca9, type: 3}
       propertyPath: m_LocalRotation.x
@@ -372,7 +372,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 3699637816089781355, guid: 30a465923c3480e4a860e357b6511ca9, type: 3}
       propertyPath: m_LocalRotation.y
-      value: -0.7071068
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 3699637816089781355, guid: 30a465923c3480e4a860e357b6511ca9, type: 3}
       propertyPath: m_LocalRotation.z
@@ -384,7 +384,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 3699637816089781355, guid: 30a465923c3480e4a860e357b6511ca9, type: 3}
       propertyPath: m_LocalEulerAnglesHint.y
-      value: -90
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 3699637816089781355, guid: 30a465923c3480e4a860e357b6511ca9, type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
@@ -1256,6 +1256,34 @@ PrefabInstance:
       propertyPath: canvas
       value: 
       objectReference: {fileID: 78131273}
+    - target: {fileID: 857726769964424819, guid: 4478d3d0c5bb4ad4aa98862ec7e8c411, type: 3}
+      propertyPath: textBoxSettings.Array.data[0].fontSize
+      value: 20
+      objectReference: {fileID: 0}
+    - target: {fileID: 857726769964424819, guid: 4478d3d0c5bb4ad4aa98862ec7e8c411, type: 3}
+      propertyPath: textBoxSettings.Array.data[0].displayText
+      value: Welcome! Use the WASD keys to move. Press Enter to close this.
+      objectReference: {fileID: 0}
+    - target: {fileID: 857726769964424819, guid: 4478d3d0c5bb4ad4aa98862ec7e8c411, type: 3}
+      propertyPath: textBoxSettings.Array.data[0].textBoxSize.x
+      value: 250
+      objectReference: {fileID: 0}
+    - target: {fileID: 857726769964424819, guid: 4478d3d0c5bb4ad4aa98862ec7e8c411, type: 3}
+      propertyPath: textBoxSettings.Array.data[0].textBoxPosition.x
+      value: -525
+      objectReference: {fileID: 0}
+    - target: {fileID: 857726769964424819, guid: 4478d3d0c5bb4ad4aa98862ec7e8c411, type: 3}
+      propertyPath: textBoxSettings.Array.data[0].textBoxPosition.y
+      value: -125
+      objectReference: {fileID: 0}
+    - target: {fileID: 857726769964424819, guid: 4478d3d0c5bb4ad4aa98862ec7e8c411, type: 3}
+      propertyPath: textBoxSettings.Array.data[0].colliderPosition.x
+      value: -300
+      objectReference: {fileID: 0}
+    - target: {fileID: 857726769964424819, guid: 4478d3d0c5bb4ad4aa98862ec7e8c411, type: 3}
+      propertyPath: textBoxSettings.Array.data[0].colliderPosition.y
+      value: 0
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 4478d3d0c5bb4ad4aa98862ec7e8c411, type: 3}
 --- !u!1001 &4279259314786102308
