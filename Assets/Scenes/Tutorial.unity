@@ -1257,7 +1257,15 @@ PrefabInstance:
       value: 
       objectReference: {fileID: 78131273}
     - target: {fileID: 857726769964424819, guid: 4478d3d0c5bb4ad4aa98862ec7e8c411, type: 3}
+      propertyPath: textBoxSettings.Array.size
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 857726769964424819, guid: 4478d3d0c5bb4ad4aa98862ec7e8c411, type: 3}
       propertyPath: textBoxSettings.Array.data[0].fontSize
+      value: 20
+      objectReference: {fileID: 0}
+    - target: {fileID: 857726769964424819, guid: 4478d3d0c5bb4ad4aa98862ec7e8c411, type: 3}
+      propertyPath: textBoxSettings.Array.data[1].fontSize
       value: 20
       objectReference: {fileID: 0}
     - target: {fileID: 857726769964424819, guid: 4478d3d0c5bb4ad4aa98862ec7e8c411, type: 3}
@@ -1265,8 +1273,32 @@ PrefabInstance:
       value: Welcome! Use the WASD keys to move. Press Enter to close this.
       objectReference: {fileID: 0}
     - target: {fileID: 857726769964424819, guid: 4478d3d0c5bb4ad4aa98862ec7e8c411, type: 3}
+      propertyPath: textBoxSettings.Array.data[1].displayText
+      value: Click on the grey cubes to break the object.
+      objectReference: {fileID: 0}
+    - target: {fileID: 857726769964424819, guid: 4478d3d0c5bb4ad4aa98862ec7e8c411, type: 3}
       propertyPath: textBoxSettings.Array.data[0].textBoxSize.x
       value: 250
+      objectReference: {fileID: 0}
+    - target: {fileID: 857726769964424819, guid: 4478d3d0c5bb4ad4aa98862ec7e8c411, type: 3}
+      propertyPath: textBoxSettings.Array.data[1].textBoxSize.x
+      value: 250
+      objectReference: {fileID: 0}
+    - target: {fileID: 857726769964424819, guid: 4478d3d0c5bb4ad4aa98862ec7e8c411, type: 3}
+      propertyPath: textBoxSettings.Array.data[1].textBoxSize.y
+      value: 10
+      objectReference: {fileID: 0}
+    - target: {fileID: 857726769964424819, guid: 4478d3d0c5bb4ad4aa98862ec7e8c411, type: 3}
+      propertyPath: textBoxSettings.Array.data[1].colliderSize.x
+      value: 10
+      objectReference: {fileID: 0}
+    - target: {fileID: 857726769964424819, guid: 4478d3d0c5bb4ad4aa98862ec7e8c411, type: 3}
+      propertyPath: textBoxSettings.Array.data[1].colliderSize.y
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 857726769964424819, guid: 4478d3d0c5bb4ad4aa98862ec7e8c411, type: 3}
+      propertyPath: textBoxSettings.Array.data[1].colliderSize.z
+      value: 10
       objectReference: {fileID: 0}
     - target: {fileID: 857726769964424819, guid: 4478d3d0c5bb4ad4aa98862ec7e8c411, type: 3}
       propertyPath: textBoxSettings.Array.data[0].textBoxPosition.x
@@ -1277,12 +1309,28 @@ PrefabInstance:
       value: -125
       objectReference: {fileID: 0}
     - target: {fileID: 857726769964424819, guid: 4478d3d0c5bb4ad4aa98862ec7e8c411, type: 3}
+      propertyPath: textBoxSettings.Array.data[1].textBoxPosition.x
+      value: -525
+      objectReference: {fileID: 0}
+    - target: {fileID: 857726769964424819, guid: 4478d3d0c5bb4ad4aa98862ec7e8c411, type: 3}
+      propertyPath: textBoxSettings.Array.data[1].textBoxPosition.y
+      value: -125
+      objectReference: {fileID: 0}
+    - target: {fileID: 857726769964424819, guid: 4478d3d0c5bb4ad4aa98862ec7e8c411, type: 3}
       propertyPath: textBoxSettings.Array.data[0].colliderPosition.x
       value: -300
       objectReference: {fileID: 0}
     - target: {fileID: 857726769964424819, guid: 4478d3d0c5bb4ad4aa98862ec7e8c411, type: 3}
       propertyPath: textBoxSettings.Array.data[0].colliderPosition.y
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 857726769964424819, guid: 4478d3d0c5bb4ad4aa98862ec7e8c411, type: 3}
+      propertyPath: textBoxSettings.Array.data[1].colliderPosition.x
+      value: -275
+      objectReference: {fileID: 0}
+    - target: {fileID: 857726769964424819, guid: 4478d3d0c5bb4ad4aa98862ec7e8c411, type: 3}
+      propertyPath: textBoxSettings.Array.data[1].colliderPosition.z
+      value: -105
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 4478d3d0c5bb4ad4aa98862ec7e8c411, type: 3}
