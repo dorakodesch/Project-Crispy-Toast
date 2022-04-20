@@ -73,6 +73,14 @@ public class @InputMasterActions : IInputActionCollection, IDisposable
                     ""expectedControlType"": ""Button"",
                     ""processors"": ""NormalizeVector2"",
                     ""interactions"": """"
+                },
+                {
+                    ""name"": ""Close Text"",
+                    ""type"": ""Button"",
+                    ""id"": ""fb661da2-f4bd-4b0e-8f38-3023115e55e6"",
+                    ""expectedControlType"": ""Button"",
+                    ""processors"": ""NormalizeVector2"",
+                    ""interactions"": """"
                 }
             ],
             ""bindings"": [
@@ -295,6 +303,17 @@ public class @InputMasterActions : IInputActionCollection, IDisposable
                     ""action"": ""Aim"",
                     ""isComposite"": false,
                     ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""0036d83d-d272-496f-83f9-05dbb8835e7c"",
+                    ""path"": ""<Keyboard>/enter"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": ""Keyboard and Mouse"",
+                    ""action"": ""Close Text"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
                 }
             ]
         }
@@ -338,6 +357,7 @@ public class @InputMasterActions : IInputActionCollection, IDisposable
         m_Player_SwitchInHand = m_Player.FindAction("Switch In Hand", throwIfNotFound: true);
         m_Player_Fire = m_Player.FindAction("Fire", throwIfNotFound: true);
         m_Player_Aim = m_Player.FindAction("Aim", throwIfNotFound: true);
+        m_Player_CloseText = m_Player.FindAction("Close Text", throwIfNotFound: true);
     }
 
     public void Dispose()
@@ -394,6 +414,7 @@ public class @InputMasterActions : IInputActionCollection, IDisposable
     private readonly InputAction m_Player_SwitchInHand;
     private readonly InputAction m_Player_Fire;
     private readonly InputAction m_Player_Aim;
+    private readonly InputAction m_Player_CloseText;
     public struct PlayerActions
     {
         private @InputMasterActions m_Wrapper;
@@ -405,6 +426,7 @@ public class @InputMasterActions : IInputActionCollection, IDisposable
         public InputAction @SwitchInHand => m_Wrapper.m_Player_SwitchInHand;
         public InputAction @Fire => m_Wrapper.m_Player_Fire;
         public InputAction @Aim => m_Wrapper.m_Player_Aim;
+        public InputAction @CloseText => m_Wrapper.m_Player_CloseText;
         public InputActionMap Get() { return m_Wrapper.m_Player; }
         public void Enable() { Get().Enable(); }
         public void Disable() { Get().Disable(); }
@@ -435,6 +457,9 @@ public class @InputMasterActions : IInputActionCollection, IDisposable
                 @Aim.started -= m_Wrapper.m_PlayerActionsCallbackInterface.OnAim;
                 @Aim.performed -= m_Wrapper.m_PlayerActionsCallbackInterface.OnAim;
                 @Aim.canceled -= m_Wrapper.m_PlayerActionsCallbackInterface.OnAim;
+                @CloseText.started -= m_Wrapper.m_PlayerActionsCallbackInterface.OnCloseText;
+                @CloseText.performed -= m_Wrapper.m_PlayerActionsCallbackInterface.OnCloseText;
+                @CloseText.canceled -= m_Wrapper.m_PlayerActionsCallbackInterface.OnCloseText;
             }
             m_Wrapper.m_PlayerActionsCallbackInterface = instance;
             if (instance != null)
@@ -460,6 +485,9 @@ public class @InputMasterActions : IInputActionCollection, IDisposable
                 @Aim.started += instance.OnAim;
                 @Aim.performed += instance.OnAim;
                 @Aim.canceled += instance.OnAim;
+                @CloseText.started += instance.OnCloseText;
+                @CloseText.performed += instance.OnCloseText;
+                @CloseText.canceled += instance.OnCloseText;
             }
         }
     }
@@ -491,5 +519,6 @@ public class @InputMasterActions : IInputActionCollection, IDisposable
         void OnSwitchInHand(InputAction.CallbackContext context);
         void OnFire(InputAction.CallbackContext context);
         void OnAim(InputAction.CallbackContext context);
+        void OnCloseText(InputAction.CallbackContext context);
     }
 }

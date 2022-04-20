@@ -1,29 +1,41 @@
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 
 public class RaycastFromCamera : MonoBehaviour
 {
-    [SerializeField] private Camera playerCamera;
+    public Camera playerCamera;
+
+    [SerializeField]
+    NPCControl npcControl;
+
+    int state;
+
+    private void Start()
+    {
+        state = 0;
+    }
 
     void Update()
-    {
-        RaycastHit hit;
-
-        if (Input.GetMouseButtonDown(0))
+    {        
+        // checking if player has clicked on stuff
+        if (Input.GetMouseButtonDown(0) && state == 0)
         {
-            Physics.Raycast(playerCamera.transform.position, playerCamera.transform.forward, out hit, 1000.0f);
+            RaycastHit hit;
+            Physics.Raycast(playerCamera.transform.position, playerCamera.transform.forward,
+                out hit);
             Transform objectHit = hit.collider.transform;
-            if (objectHit != null)
+            Debug.Log(objectHit.name);
+            switch (objectHit.tag)
             {
-                Debug.Log(objectHit.name);
-                if (objectHit.tag == "Joint")
-                {
-                    Destroy(objectHit.gameObject);
-                }
+                case "NPC":
+                    npcControl.OpenMenu();
+                    state = 1;
+                    break;
             }
-            
-            Debug.Log("Ray has been cast");
+        }
+
+        if (npcControl.menuOpen == false)
+        {
+            state = 0;
         }
     }
 }

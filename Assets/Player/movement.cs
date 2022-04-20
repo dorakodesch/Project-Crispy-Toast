@@ -4,39 +4,52 @@ using UnityEngine.InputSystem;
 
 public class movement : MonoBehaviour
 {
+    // movement state
+    [HideInInspector]
+    public enum MovementType { GROUND, AIR, GRAPPLE }
+    [HideInInspector]
+    public MovementType currentMoveType = MovementType.GROUND;
+
+    // public refrence vars
+    [SerializeField]
+    private Texture2D crosshair;
+
     // button pressed variables
     private bool jumpNext = false;
     private bool sprintNext = false;
 
-    // exposed script variables
-    [HideInInspector]
-    public bool movementOverride = false;
-
     // refrence environment variables
     private CharacterController playerController;
     private Transform playerCamera;
+    [HideInInspector]
     public InputMasterActions inputMaster;
+    [HideInInspector]
+    public Vector3 grappleTarget;
 
     // script inspector attribute variables
     [SerializeField, Range(0f, 100f)]
     private float movementSpeedForward = 50f;
     [SerializeField, Range(0f, 100f)]
     private float movementSpeedSideways = 50f;
-    [SerializeField, Range(0f, 1f)]
+    [SerializeField, Range(0f, 10f)]
     private float lookSpeed = 1f;
     [SerializeField, Range(5f, 90f)]
     private float lookUpperLimit = 85f;
     [SerializeField, Range(-90f, -5f)]
     private float lookLowerLimit = -85f;
-    [SerializeField, Range(0f, 1f)]
+    [SerializeField, Range(0f, 100f)]
     private float jumpInitialVelocity = 1f;
-    [SerializeField, Range(1, 3)]
-    public float sprintMutliplier = 1f;
+    [SerializeField, Range(1f, 3f)]
+    private float sprintMutliplier = 1f;
+    [SerializeField, Range(0f, 1f)]
+    private float airMoveMultiplier = 0.5f;
+    [SerializeField, Range(0f, 100f)]
+    private float grappleMoveMultiplier = 10f;
 
     // script private condensed vars
     private Vector3 movementSpeed;
 
-    // global vars to be refrenced in multiple functions
+    // local vars to be refrenced in multiple functions
     private Vector3 playerMovement;
     private Vector2 look;
     private float gravityEffect;
@@ -45,6 +58,8 @@ public class movement : MonoBehaviour
     // create input system catching variables
     private Vector3 inputMovement = new Vector3(0, 0, 0);
     private Vector2 inputLook = new Vector2(0, 0);
+
+    float temp = 0;
 
     // Awake is called before start
     private void Awake()
@@ -64,14 +79,14 @@ public class movement : MonoBehaviour
         gravityEffect = 0;
         currentVerticalMovement = 0;
 
-        // lock cursor to center of screen
+        // lock cursor to center of screen and texture
         Cursor.lockState = CursorLockMode.Locked;
 
         // condense vars
         movementSpeed = new Vector3(movementSpeedForward, 0, movementSpeedSideways);
     }
 
-    // Update is called once per frame
+    // Update is called once per frame and is used only for look functions
     private void Update()
     {
         // get mouse and keyboard input
@@ -88,7 +103,7 @@ public class movement : MonoBehaviour
 
         // query current direction, normalize, and add movement
         float verticalAngle = normalizeAngle(playerCamera.rotation.eulerAngles.x);
-        verticalAngle += Vector2.Scale(look, new Vector2(lookSpeed, lookSpeed)).y;
+        verticalAngle += look.y * lookSpeed;
 
         // clamp to possible range and denormalize
         verticalAngle = Mathf.Clamp(verticalAngle, lookLowerLimit, lookUpperLimit);
@@ -98,42 +113,84 @@ public class movement : MonoBehaviour
         playerCamera.Rotate(new Vector3(verticalAngle - directionTempVert, 0, 0));
     }
 
-    // Fixed Update is called once per physics cycle
+    // Fixed Update is called once per physics cycle and is used for movement
     private void FixedUpdate()
     {
         // create current physics cycle movement variable
         Vector3 currentMovement = new Vector3(0, 0, 0);
 
-        // calculate gravity movement
-        if(!playerController.isGrounded)
-            gravityEffect += Physics.gravity.y * Time.fixedDeltaTime;
-        else
+        // switch based on movement type
+        switch (currentMoveType)
         {
-            gravityEffect = Physics.gravity.y * Time.fixedDeltaTime;
-            currentVerticalMovement = 0;
+            case MovementType.GROUND:
+                // jump only if on ground
+                if(jumpNext)
+                {
+                    currentVerticalMovement = jumpInitialVelocity;
+                    jumpNext = false;
+                    currentMovement += new Vector3(0, currentVerticalMovement, 0);
+                    currentMoveType = MovementType.AIR;
+                    temp = Time.time;
+                    break;
+                }
+
+                // force player into ground when grounded
+                currentVerticalMovement = -1f;
+                currentMovement += new Vector3(0, currentVerticalMovement, 0);
+
+                // apply keyboard input movement to player when grounded
+                playerMovement = transform.TransformDirection(playerMovement);
+                currentMovement += Vector3.Scale(playerMovement, movementSpeed) * Time.fixedDeltaTime;
+
+                // switch to air
+                if (!playerController.isGrounded)
+                {
+                    currentMoveType = MovementType.AIR;
+                    temp = Time.time;
+                }
+                break;
+            case MovementType.AIR:
+                // kill jump when already in air
+                jumpNext = false;
+
+                // apply gravity in air
+                gravityEffect = Physics.gravity.y * Time.fixedDeltaTime;
+                currentVerticalMovement += gravityEffect;
+                currentMovement += new Vector3(0, currentVerticalMovement, 0);
+
+                // apply air movement from keyboard input
+                playerMovement = transform.TransformDirection(playerMovement);
+                currentMovement += Vector3.Scale(playerMovement, movementSpeed) * airMoveMultiplier * Time.fixedDeltaTime;
+
+                // switch to ground
+                if (playerController.isGrounded)
+                {
+                    currentMoveType = MovementType.GROUND;
+                }
+                    
+                break;
+            case MovementType.GRAPPLE:
+                // kill jump when grappling
+                jumpNext = false;
+                if(Mathf.Abs(Vector3.Distance(grappleTarget, this.transform.position)) > 2)
+                {
+                    Vector3 normalGrapplePull = (grappleTarget - this.transform.position).normalized;
+                    Vector3 physicalGrapplePull = normalGrapplePull * grappleMoveMultiplier;
+                    currentMovement = Vector3.zero;
+                    currentMovement += physicalGrapplePull * Time.deltaTime * grappleMoveMultiplier;
+                }
+                else
+                {
+                    currentMoveType = MovementType.AIR;
+                }
+                break;
         }
-        currentVerticalMovement += gravityEffect * Time.fixedDeltaTime;
-
-        // jump
-        if(jumpNext)
-        {
-            currentVerticalMovement += jumpInitialVelocity;
-            jumpNext = false;
-        }
-
-        // add in the vertical component of movement
-        currentMovement += new Vector3(0, currentVerticalMovement, 0);
-
-        // add wasd forward backward left right movement controls to player
-        playerMovement = transform.TransformDirection(playerMovement);
-        currentMovement += Vector3.Scale(playerMovement, movementSpeed) * Time.fixedDeltaTime;
 
         // move the player based the the movement for the current physics update
-        if(!movementOverride)
-            playerController.Move(currentMovement);
+        playerController.Move(currentMovement);
 
         // rotate player horizontally to look at mouse
-        transform.Rotate(new Vector3(0, Vector2.Scale(look, new Vector2(lookSpeed, lookSpeed)).x, 0));
+        transform.Rotate(new Vector3(0, look.x * lookSpeed, 0));
     }
 
     // normalize angle to return between -180 and 180, centered on horizon with negative values facing down
@@ -159,16 +216,16 @@ public class movement : MonoBehaviour
     // look function
     public void Look(InputAction.CallbackContext context)
     {
-        inputLook = context.ReadValue<Vector2>();
+        inputLook = context.ReadValue<Vector2>() * Time.deltaTime;
     }
 
     // jump function
     public void Jump(InputAction.CallbackContext context)
     {
-        if (playerController.isGrounded)
-            jumpNext = true;
+        jumpNext = true;
     }
 
+    // sprint function
     public void Sprint(InputAction.CallbackContext context)
     {
         if(context.started || context.canceled)

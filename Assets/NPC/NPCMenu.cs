@@ -1,21 +1,47 @@
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
+using TMPro;
 
 public class NPCMenu : MonoBehaviour
 {
-    // Canvas refrence vars
-    public Canvas mainMenu;
+    // menu visuals
+    [SerializeField]
+    TextMeshProUGUI toolName, upgradeCosts;
 
-    // Start is called before the first frame update
-    void Start()
+    // reference for which tool to upgrade
+    [SerializeField]
+    NPCControl npcControl;
+
+    [SerializeField]
+    Transform player;
+
+    [SerializeField]
+    Canvas menuCanvas;
+
+    private void Start()
     {
-        
+        menuCanvas.gameObject.SetActive(false);
     }
 
-    // Update is called once per frame
-    void Update()
+    // update for test purposes and also pretty sure this is how it'll work anyway
+    private void Update()
     {
-        
+        inventory playerInventory = player.GetComponent<inventory>();
+        inventory.tools toolToUpgrade = npcControl.toUpgrade;
+
+        // setting all texts
+        toolName.text = playerInventory.toolNames[(int)toolToUpgrade];
+        toolName.alignment = TextAlignmentOptions.Center;
+
+        resourceConsumption costs = 
+            npcControl.levelCosts[playerInventory.toolLevels[(int)toolToUpgrade]];
+
+        upgradeCosts.text = costs.resources[0].ToString();
+
+        for (int i = 1; i < costs.resources.Length; i++)
+        {
+            // 8 spaces between resources idk why but it works
+            upgradeCosts.text =
+                upgradeCosts.text + "        " + costs.resources[i].ToString();
+        }
     }
 }

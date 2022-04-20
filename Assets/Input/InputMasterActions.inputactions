@@ -60,6 +60,14 @@
                     "expectedControlType": "Button",
                     "processors": "NormalizeVector2",
                     "interactions": ""
+                },
+                {
+                    "name": "Close Text",
+                    "type": "Button",
+                    "id": "fb661da2-f4bd-4b0e-8f38-3023115e55e6",
+                    "expectedControlType": "Button",
+                    "processors": "NormalizeVector2",
+                    "interactions": ""
                 }
             ],
             "bindings": [
@@ -280,6 +288,17 @@
                     "processors": "",
                     "groups": "Controller",
                     "action": "Aim",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
+                    "id": "0036d83d-d272-496f-83f9-05dbb8835e7c",
+                    "path": "<Keyboard>/enter",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "Keyboard and Mouse",
+                    "action": "Close Text",
                     "isComposite": false,
                     "isPartOfComposite": false
                 }
