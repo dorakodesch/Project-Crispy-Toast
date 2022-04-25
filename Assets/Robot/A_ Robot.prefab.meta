@@ -1,5 +1,9 @@
 fileFormatVersion: 2
+<<<<<<< HEAD:Assets/Destructable Objects/Destructable Object.prefab.meta
+guid: cfc954c4029d46a42a8e45bda5a0ae61
+=======
 guid: 80dbca7cb29ec634b8323d581412b4c1
+>>>>>>> 331e8740932c366b47310bc4dbe687181f971496:Assets/Robot/A_ Robot.prefab.meta
 PrefabImporter:
   externalObjects: {}
   userData: 

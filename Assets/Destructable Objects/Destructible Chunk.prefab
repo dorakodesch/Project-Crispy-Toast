@@ -63,7 +63,7 @@ MeshRenderer:
   m_RenderingLayerMask: 257
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 2100000, guid: bb9d9e2b9cea7304db69614fe4bd17cd, type: 2}
+  - {fileID: 2100000, guid: 73c176f402d2c2f4d929aa5da7585d17, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -115,7 +115,6 @@ MonoBehaviour:
   - {fileID: 0}
   - {fileID: 0}
   jointsGone: 0
-  type: 0
 --- !u!208 &5154297958132037965
 NavMeshObstacle:
   m_ObjectHideFlags: 0

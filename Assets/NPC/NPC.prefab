@@ -190,7 +190,6 @@ MonoBehaviour:
   player: {fileID: 0}
   menuCanvas: {fileID: 3033652205708166990}
   playerCanvas: {fileID: 0}
-  menuOpen: 0
 --- !u!64 &2723930644139526904
 MeshCollider:
   m_ObjectHideFlags: 0
