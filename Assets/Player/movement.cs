@@ -37,7 +37,7 @@ public class movement : MonoBehaviour
     private float lookUpperLimit = 85f;
     [SerializeField, Range(-90f, -5f)]
     private float lookLowerLimit = -85f;
-    [SerializeField, Range(0f, 100f)]
+    [SerializeField, Range(0f, 5f)]
     private float jumpInitialVelocity = 1f;
     [SerializeField, Range(1f, 3f)]
     private float sprintMutliplier = 1f;

@@ -300,7 +300,7 @@ MonoBehaviour:
   lookSpeed: 5
   lookUpperLimit: 85
   lookLowerLimit: -85
-  jumpInitialVelocity: 0.3
+  jumpInitialVelocity: 1.7
   sprintMutliplier: 2
   airMoveMultiplier: 0.5
   grappleMoveMultiplier: 10
