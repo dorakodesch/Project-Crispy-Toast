@@ -42,13 +42,15 @@ public class TextPromptCreator : MonoBehaviour
             var go = Instantiate(textPrefab);
 			var t = go.transform;
             t.SetParent(canvas.transform, false);
+			var panelTransform = go.GetComponent<RectTransform>();
             var text = t.GetChild(0).GetComponent<TextMeshProUGUI>();
+
             // setting text box size, kind of a pain
-            text.rectTransform.SetSizeWithCurrentAnchors(
+            panelTransform.SetSizeWithCurrentAnchors(
                 RectTransform.Axis.Horizontal, settings.textBoxSize.x);
             text.rectTransform.SetSizeWithCurrentAnchors(
                 RectTransform.Axis.Vertical, settings.textBoxSize.y);
-            text.rectTransform.anchoredPosition = settings.textBoxPosition;
+            panelTransform.anchoredPosition = settings.textBoxPosition;
             text.SetText(settings.displayText);
             text.fontSize = settings.fontSize;
             textObjects[i] = go;

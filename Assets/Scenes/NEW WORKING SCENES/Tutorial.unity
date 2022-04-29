@@ -258,11 +258,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 857726769964424819, guid: 4478d3d0c5bb4ad4aa98862ec7e8c411, type: 3}
       propertyPath: textBoxSettings.Array.data[0].fontSize
-      value: 36
+      value: 20
       objectReference: {fileID: 0}
     - target: {fileID: 857726769964424819, guid: 4478d3d0c5bb4ad4aa98862ec7e8c411, type: 3}
       propertyPath: textBoxSettings.Array.data[0].displayText
-      value: test
+      value: Welcome! Use the WASD keys to move.
       objectReference: {fileID: 0}
     - target: {fileID: 857726769964424819, guid: 4478d3d0c5bb4ad4aa98862ec7e8c411, type: 3}
       propertyPath: textBoxSettings.Array.data[0].textBoxSize.x
