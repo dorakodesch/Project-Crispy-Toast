@@ -40,8 +40,9 @@ public class TextPromptCreator : MonoBehaviour
 
             // creating text object
             var go = Instantiate(textPrefab);
-            go.transform.SetParent(canvas.transform, false);
-            var text = go.GetComponent<TextMeshProUGUI>();
+			var t = go.transform;
+            t.SetParent(canvas.transform, false);
+            var text = t.GetChild(0).GetComponent<TextMeshProUGUI>();
             // setting text box size, kind of a pain
             text.rectTransform.SetSizeWithCurrentAnchors(
                 RectTransform.Axis.Horizontal, settings.textBoxSize.x);
@@ -58,24 +59,19 @@ public class TextPromptCreator : MonoBehaviour
             go.transform.position = settings.colliderPosition;
             go.transform.localScale = settings.colliderSize;
             go.AddComponent<BoxCollider>().isTrigger = true;
-            go.AddComponent<TextBoxCollider>();
-            TextBoxCollider textBoxCollider = go.GetComponent<TextBoxCollider>();
-            textBoxCollider.promptCreator = this;
-            textBoxCollider.index = i;
+
+			go.AddComponent<TextBoxCollider>().creator = this;
+			go.GetComponent<TextBoxCollider>().index = i;
         }
     }
 
-    public void CollisionDetected(int i)
+    public void OnPlayerEnter(int i)
     {
-        GameObject go = textObjects[i];
-        go.SetActive(true);
+        textObjects[i].SetActive(true);
     }
 
-    public void CloseText(InputAction.CallbackContext context)
-    {
-        for (int i = 0; i < textObjects.Length; i++)
-        {
-            textObjects[i].SetActive(false);
-        }
-    }
+	public void OnPlayerExit(int i)
+	{
+		textObjects[i].SetActive(false);
+	}
 }

@@ -12,7 +12,7 @@ GameObject:
   - component: {fileID: 857726769964424819}
   - component: {fileID: 350618023907310968}
   m_Layer: 0
-  m_Name: TextPromptManager
+  m_Name: Text Prompt Manager
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
