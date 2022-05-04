@@ -48,9 +48,11 @@ public class TextPromptCreator : MonoBehaviour
             // setting text box size, kind of a pain
             panelTransform.SetSizeWithCurrentAnchors(
                 RectTransform.Axis.Horizontal, settings.textBoxSize.x);
-            text.rectTransform.SetSizeWithCurrentAnchors(
+            panelTransform.SetSizeWithCurrentAnchors(
                 RectTransform.Axis.Vertical, settings.textBoxSize.y);
             panelTransform.anchoredPosition = settings.textBoxPosition;
+			
+
             text.SetText(settings.displayText);
             text.fontSize = settings.fontSize;
             textObjects[i] = go;
