@@ -1,3 +1,4 @@
+// all npc upgrade stuff
 using UnityEngine;
 using System;
 using TMPro;
