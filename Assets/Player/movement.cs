@@ -222,7 +222,10 @@ public class movement : MonoBehaviour
     // jump function
     public void Jump(InputAction.CallbackContext context)
     {
-        jumpNext = true;
+        if(context.performed)
+        {
+            jumpNext = true;
+        }
     }
 
     // sprint function
