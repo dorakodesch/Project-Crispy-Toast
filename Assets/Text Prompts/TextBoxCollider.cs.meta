@@ -1,9 +1,5 @@
 fileFormatVersion: 2
-<<<<<<<< HEAD:Assets/Text Prompts/TextBoxCollider.cs.meta
-guid: 926269c7a6ec6d24b82bb1c000e298b7
-========
-guid: 2d623fb0ba27afa4b85a23a277bdb206
->>>>>>>> main:Assets/Tools/grapple/grapple.cs.meta
+guid: e3c861e9ece155b43806a3705adfde01
 MonoImporter:
   externalObjects: {}
   serializedVersion: 2

@@ -1,17 +1,24 @@
 using UnityEngine;
 
-[RequireComponent(typeof(Collider))]
 public class TextBoxCollider : MonoBehaviour
 {
-    public TextPromptCreator promptCreator;
+	public TextPromptCreator creator;
 
-    public int index;
+	public int index;
 
-    private void OnTriggerEnter(Collider other)
-    {
-        if (other.gameObject.CompareTag("Player"))
-        {
-            promptCreator.CollisionDetected(index);
-        }
-    }
+	private void OnTriggerEnter(Collider other)
+	{
+		if (other.gameObject.CompareTag("Player"))
+		{
+			creator.OnPlayerEnter(index);
+		}
+	}
+
+	private void OnTriggerExit(Collider other)
+	{
+		if (other.gameObject.CompareTag("Player"))
+		{
+			creator.OnPlayerExit(index);
+		}
+	}
 }

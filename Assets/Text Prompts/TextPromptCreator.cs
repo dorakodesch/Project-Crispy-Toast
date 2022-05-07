@@ -1,28 +1,26 @@
 using TMPro;
 using UnityEngine;
-using UnityEngine.InputSystem;
 
 public class TextPromptCreator : MonoBehaviour
 {
-    [System.Serializable]
-    struct TextBoxSettings
-    {
-        public Vector2 textBoxSize, textBoxPosition;
+	[System.Serializable]
+	struct TextBoxSettings
+	{
+		public Vector2 textBoxSize, textBoxPosition;
 
-        public string displayText;
+		public string displayText;
 
-        public int fontSize;
-
-        public Vector3 colliderPosition;
-
-        public Vector3 colliderSize;
-    }
+		public int fontSize;
+	}
 
     [SerializeField]
     Canvas canvas;
 
     [SerializeField]
     GameObject textPrefab;
+
+	[SerializeField]
+	GameObject colliderParent;
 
     [SerializeField]
     TextBoxSettings[] textBoxSettings;
@@ -40,42 +38,47 @@ public class TextPromptCreator : MonoBehaviour
 
             // creating text object
             var go = Instantiate(textPrefab);
-            go.transform.SetParent(canvas.transform, false);
-            var text = go.GetComponent<TextMeshProUGUI>();
+			var t = go.transform;
+            t.SetParent(canvas.transform, false);
+			var panelTransform = go.GetComponent<RectTransform>();
+            var text = t.GetChild(0).GetComponent<TextMeshProUGUI>();
+
             // setting text box size, kind of a pain
-            text.rectTransform.SetSizeWithCurrentAnchors(
+            panelTransform.SetSizeWithCurrentAnchors(
                 RectTransform.Axis.Horizontal, settings.textBoxSize.x);
-            text.rectTransform.SetSizeWithCurrentAnchors(
+            panelTransform.SetSizeWithCurrentAnchors(
                 RectTransform.Axis.Vertical, settings.textBoxSize.y);
-            text.rectTransform.anchoredPosition = settings.textBoxPosition;
+            panelTransform.anchoredPosition = settings.textBoxPosition;
+			
+
             text.SetText(settings.displayText);
             text.fontSize = settings.fontSize;
             textObjects[i] = go;
             go.SetActive(false);
 
             // collider stuff
-            go = new GameObject("Collider " + i);
-            go.transform.position = settings.colliderPosition;
-            go.transform.localScale = settings.colliderSize;
-            go.AddComponent<BoxCollider>().isTrigger = true;
-            go.AddComponent<TextBoxCollider>();
-            TextBoxCollider textBoxCollider = go.GetComponent<TextBoxCollider>();
-            textBoxCollider.promptCreator = this;
-            textBoxCollider.index = i;
+            Transform collider = colliderParent.transform.GetChild(i);
+			collider.gameObject.AddComponent<TextBoxCollider>().creator = this;
+			collider.gameObject.GetComponent<TextBoxCollider>().index = i;
         }
     }
 
-    public void CollisionDetected(int i)
+    public void OnPlayerEnter(int i)
     {
-        GameObject go = textObjects[i];
-        go.SetActive(true);
+        textObjects[i].SetActive(true);
     }
 
-    public void CloseText(InputAction.CallbackContext context)
-    {
-        for (int i = 0; i < textObjects.Length; i++)
-        {
-            textObjects[i].SetActive(false);
-        }
-    }
+	public void OnPlayerExit(int i)
+	{
+		textObjects[i].SetActive(false);
+	}
+
+	private void OnDrawGizmos()
+	{
+		for (int i = 0; i < colliderParent.transform.childCount; i++)
+		{
+			Transform collider = colliderParent.transform.GetChild(i);
+			Gizmos.DrawWireCube(collider.position, collider.localScale);
+		}
+	}
 }
