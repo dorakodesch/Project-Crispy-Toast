@@ -17,6 +17,9 @@
         },
         {
             "m_Id": "25f1a8f12c934c7b9513f43f94f32add"
+        },
+        {
+            "m_Id": "3de3ce5b27c74e87ab32f46a3b55c936"
         }
     ],
     "m_Keywords": [],
@@ -83,6 +86,9 @@
         },
         {
             "m_Id": "f4ed7a8ee55046ef811229d6df18d25d"
+        },
+        {
+            "m_Id": "5db5c79d23bd4c00b4e8d0a89d2a50e6"
         }
     ],
     "m_GroupDatas": [],
@@ -224,6 +230,20 @@
             "m_InputSlot": {
                 "m_Node": {
                     "m_Id": "efb48fc411194c39bc35af589d409861"
+                },
+                "m_SlotId": 1
+            }
+        },
+        {
+            "m_OutputSlot": {
+                "m_Node": {
+                    "m_Id": "5db5c79d23bd4c00b4e8d0a89d2a50e6"
+                },
+                "m_SlotId": 0
+            },
+            "m_InputSlot": {
+                "m_Node": {
+                    "m_Id": "1f41b363a7434b2da117055f2b49772d"
                 },
                 "m_SlotId": 1
             }
@@ -952,6 +972,29 @@
 }
 
 {
+    "m_SGVersion": 1,
+    "m_Type": "UnityEditor.ShaderGraph.Internal.Vector1ShaderProperty",
+    "m_ObjectId": "3de3ce5b27c74e87ab32f46a3b55c936",
+    "m_Guid": {
+        "m_GuidSerialized": "645bab16-242b-4a03-8ba0-cfd364f6a094"
+    },
+    "m_Name": "Steps",
+    "m_DefaultReferenceName": "Vector1_3de3ce5b27c74e87ab32f46a3b55c936",
+    "m_OverrideReferenceName": "",
+    "m_GeneratePropertyBlock": true,
+    "m_Precision": 0,
+    "overrideHLSLDeclaration": false,
+    "hlslDeclarationOverride": 0,
+    "m_Hidden": false,
+    "m_Value": 40.0,
+    "m_FloatType": 0,
+    "m_RangeValues": {
+        "x": 0.0,
+        "y": 1.0
+    }
+}
+
+{
     "m_SGVersion": 0,
     "m_Type": "UnityEditor.ShaderGraph.Vector4MaterialSlot",
     "m_ObjectId": "41ff224582a044b7b7a6e991f2f672a0",
@@ -1231,6 +1274,41 @@
         "y": 0.0,
         "z": 0.0,
         "w": 0.0
+    }
+}
+
+{
+    "m_SGVersion": 0,
+    "m_Type": "UnityEditor.ShaderGraph.PropertyNode",
+    "m_ObjectId": "5db5c79d23bd4c00b4e8d0a89d2a50e6",
+    "m_Group": {
+        "m_Id": ""
+    },
+    "m_Name": "Property",
+    "m_DrawState": {
+        "m_Expanded": true,
+        "m_Position": {
+            "serializedVersion": "2",
+            "x": -404.85693359375,
+            "y": 309.650146484375,
+            "width": 0.0,
+            "height": 0.0
+        }
+    },
+    "m_Slots": [
+        {
+            "m_Id": "d1d187bc1fc2489bac4cca53a174bcaa"
+        }
+    ],
+    "synonyms": [],
+    "m_Precision": 0,
+    "m_PreviewExpanded": true,
+    "m_PreviewMode": 0,
+    "m_CustomColors": {
+        "m_SerializableColors": []
+    },
+    "m_Property": {
+        "m_Id": "3de3ce5b27c74e87ab32f46a3b55c936"
     }
 }
 
@@ -2150,6 +2228,21 @@
         "z": 0.0,
         "w": 0.0
     }
+}
+
+{
+    "m_SGVersion": 0,
+    "m_Type": "UnityEditor.ShaderGraph.Vector1MaterialSlot",
+    "m_ObjectId": "d1d187bc1fc2489bac4cca53a174bcaa",
+    "m_Id": 0,
+    "m_DisplayName": "Steps",
+    "m_SlotType": 1,
+    "m_Hidden": false,
+    "m_ShaderOutputName": "Out",
+    "m_StageCapability": 3,
+    "m_Value": 0.0,
+    "m_DefaultValue": 0.0,
+    "m_Labels": []
 }
 
 {
