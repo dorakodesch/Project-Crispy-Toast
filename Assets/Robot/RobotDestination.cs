@@ -6,6 +6,9 @@ public class RobotDestination : MonoBehaviour
 	[SerializeField]
 	Transform player;
 
+	[SerializeField]
+	float followDistance = 1;
+
 	// int in case we need >2 states later
 	int state;
 
@@ -28,7 +31,7 @@ public class RobotDestination : MonoBehaviour
 		// following player
 		if (state == 0)
 		{
-			transform.position = player.position;
+			transform.position = player.position + Vector3.Normalize(this.transform.position - player.transform.position) * followDistance;
 		}
 		// following chunk
 		else

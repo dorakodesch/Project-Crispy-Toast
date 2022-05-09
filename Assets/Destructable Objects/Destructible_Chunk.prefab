@@ -13,7 +13,6 @@ GameObject:
   - component: {fileID: 7602327179773805347}
   - component: {fileID: 7602327179773805346}
   - component: {fileID: 7602327179773805345}
-  - component: {fileID: 5154297958132037965}
   - component: {fileID: 6104939046143847747}
   m_Layer: 0
   m_Name: Destructible_Chunk
@@ -116,22 +115,6 @@ MonoBehaviour:
   - {fileID: 0}
   jointsGone: 0
   type: 0
---- !u!208 &5154297958132037965
-NavMeshObstacle:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 7602327179773805372}
-  m_Enabled: 1
-  serializedVersion: 3
-  m_Shape: 1
-  m_Extents: {x: 0.5, y: 0.5, z: 0.5}
-  m_MoveThreshold: 0.1
-  m_Carve: 0
-  m_CarveOnlyStationary: 1
-  m_Center: {x: 0, y: 0, z: 0}
-  m_TimeToStationary: 0.5
 --- !u!54 &6104939046143847747
 Rigidbody:
   m_ObjectHideFlags: 0
